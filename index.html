@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmet Heads - Brookland Cayce High School Cycling Club</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-bicycle"></i>
+                <span>Helmet Heads</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#program" class="nav-link">Program</a></li>
+                <li><a href="#fundraising" class="nav-link">Support Us</a></li>
+                <li><a href="#contact" class="nav-link">Join</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Welcome to <span class="highlight">Helmet Heads</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Brookland Cayce High School's premier cycling club where teenagers discover the joy of cycling, build friendships, and explore the outdoors together.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Join the Club</a>
+                    <a href="#fundraising" class="btn btn-secondary">Support Our Mission</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="bike-illustration">
+                    <i class="fas fa-bicycle"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Helmet Heads</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>Build lasting friendships with fellow students who share your passion for adventure and outdoor activities.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Health & Fitness</h3>
+                    <p>Improve your physical and mental health through regular cycling activities in a fun, supportive environment.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Exploration</h3>
+                    <p>Discover beautiful trails and routes around our community while learning about cycling safety and maintenance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Details -->
+    <section id="program" class="program">
+        <div class="container">
+            <h2 class="section-title">Our Program</h2>
+            <div class="program-content">
+                <div class="program-info">
+                    <h3>What We Offer</h3>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Weekly group rides led by experienced teacher Laura</li>
+                        <li><i class="fas fa-check"></i> Safety training and cycling skills development</li>
+                        <li><i class="fas fa-check"></i> Bike maintenance workshops</li>
+                        <li><i class="fas fa-check"></i> Social events and team building activities</li>
+                        <li><i class="fas fa-check"></i> Free bike provided for committed members</li>
+                    </ul>
+                    
+                    <div class="schedule">
+                        <h4>When We Meet</h4>
+                        <div class="schedule-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Every Saturday at 9:00 AM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <i class="fas fa-clock"></i>
+                            <span>2-3 hour rides (beginner friendly)</span>
+                        </div>
+                        <div class="schedule-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Meet at Brookland Cayce High School</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="leader-info">
+                    <div class="leader-card">
+                        <div class="leader-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Laura</h4>
+                        <p class="leader-title">Club Leader & Safety Instructor</p>
+                        <p>Experienced cyclist and certified instructor dedicated to creating a safe, fun environment for all skill levels.</p>
+                        <div class="leader-qualities">
+                            <span class="quality">Safety First</span>
+                            <span class="quality">10+ Years Experience</span>
+                            <span class="quality">Youth Mentor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fundraising Section -->
+    <section id="fundraising" class="fundraising">
+        <div class="container">
+            <h2 class="section-title">Help Us Get Every Kid a Bike!</h2>
+            <p class="fundraising-intro">
+                Most of our students don't own bikes, but that shouldn't stop them from joining our cycling community. 
+                Your donation helps us purchase quality bikes for students who commit to regular participation.
+            </p>
+            
+            <div class="fundraising-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="raised-amount">$2,450</div>
+                    <div class="stat-label">Raised So Far</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$15,000</div>
+                    <div class="stat-label">Goal Amount</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="bikes-funded">8</div>
+                    <div class="stat-label">Bikes Funded</div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p class="progress-text">16% of our goal reached!</p>
+            </div>
+            
+            <div class="donation-info">
+                <h3>How Your Donation Helps</h3>
+                <div class="donation-tiers">
+                    <div class="tier">
+                        <h4>$300</h4>
+                        <p>Funds one complete bike setup</p>
+                    </div>
+                    <div class="tier">
+                        <h4>$50</h4>
+                        <p>Covers safety gear for one student</p>
+                    </div>
+                    <div class="tier">
+                        <h4>$25</h4>
+                        <p>Helps with maintenance and repairs</p>
+                    </div>
+                    <div class="tier">
+                        <h4>Any Amount</h4>
+                        <p>Every dollar makes a difference!</p>
+                    </div>
+                </div>
+                
+                <div class="donate-button-container">
+                    <button class="btn btn-primary btn-large" id="donate-btn">
+                        <i class="fas fa-heart"></i>
+                        Donate Now
+                    </button>
+                    <p class="donate-note">Donations go directly to purchasing bikes and safety equipment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Join Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Join Helmet Heads?</h2>
+            <p class="contact-intro">
+                Sign up below to join our cycling community! No experience necessary - just bring your enthusiasm and we'll provide the rest.
+            </p>
+            
+            <div class="contact-content">
+                <form class="signup-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="student-name">Student Name</label>
+                        <input type="text" id="student-name" name="studentName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grade">Grade Level</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="9">9th Grade</option>
+                            <option value="10">10th Grade</option>
+                            <option value="11">11th Grade</option>
+                            <option value="12">12th Grade</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parent-name">Parent/Guardian Name</label>
+                        <input type="text" id="parent-name" name="parentName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Contact Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Cycling Experience</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Select Experience Level</option>
+                            <option value="none">No experience</option>
+                            <option value="beginner">Beginner (can ride but need practice)</option>
+                            <option value="intermediate">Intermediate (comfortable on bike)</option>
+                            <option value="advanced">Advanced (experienced cyclist)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="commitment" name="commitment" required>
+                            <span class="checkmark"></span>
+                            I commit to attending regular group rides and following safety guidelines
+                        </label>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="bike-needed" name="bikeNeeded">
+                            <span class="checkmark"></span>
+                            I need a bike provided by the program
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">
+                        Join Helmet Heads!
+                    </button>
+                </form>
+                
+                <div class="contact-info">
+                    <h3>Questions?</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>helmetheads@bchs.edu</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(803) 555-0123</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Brookland Cayce High School<br>1300 State St, Cayce, SC 29033</span>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Follow Us</h4>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-bicycle"></i>
+                    <span>Helmet Heads</span>
+                </div>
+                <p>&copy; 2024 Helmet Heads Cycling Club - Brookland Cayce High School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -557,6 +557,7 @@ html {
     margin-top: 1rem;
     color: var(--gray-color);
     font-size: 0.875rem;
+    text-align: center;
 }
 
 /* GiveButter Widget Containers */

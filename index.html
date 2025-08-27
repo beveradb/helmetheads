@@ -194,7 +194,11 @@
             </p>
             
             <div class="contact-content">
-                <form class="signup-form" id="signup-form">
+                <form class="signup-form" id="signup-form" action="https://formspree.io/f/mqadapyd" method="POST">
+                    <!-- Hidden field to identify form type -->
+                    <input type="hidden" name="_subject" value="New Helmet Heads Club Registration">
+                    <input type="hidden" name="formType" value="Club Registration">
+                    
                     <div class="form-group">
                         <label for="student-name">Student Name</label>
                         <input type="text" id="student-name" name="studentName" required>

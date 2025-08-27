@@ -82,27 +82,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form submission handling
+// Form submission handling with Formspree integration
 document.getElementById('signup-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
+    // Get form data for validation
     const formData = new FormData(this);
     const data = {};
     for (let [key, value] of formData.entries()) {
         data[key] = value;
     }
     
-    // Simple validation
+    // Simple validation - prevent submission if validation fails
     const requiredFields = ['studentName', 'grade', 'parentName', 'email', 'phone', 'experience'];
     const missingFields = requiredFields.filter(field => !data[field]);
     
     if (missingFields.length > 0) {
+        e.preventDefault();
         alert('Please fill in all required fields.');
         return;
     }
     
     if (!data.commitment) {
+        e.preventDefault();
         alert('Please confirm your commitment to the program.');
         return;
     }
@@ -110,31 +110,20 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
+        e.preventDefault();
         alert('Please enter a valid email address.');
         return;
     }
     
-    // Show success message
+    // Show submitting state
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     
-    submitBtn.innerHTML = '<i class="fas fa-check"></i> Registration Submitted!';
-    submitBtn.style.background = 'var(--accent-color)';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
     submitBtn.disabled = true;
     
-    // In a real application, you would send this data to your server
-    console.log('Form submitted with data:', data);
-    
-    // Show success message
-    setTimeout(() => {
-        alert(`Thank you ${data.studentName}! Your registration has been submitted. We'll contact you at ${data.email} with next steps.`);
-        
-        // Reset form
-        this.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-    }, 1500);
+    // Let the form submit naturally to Formspree
+    // Formspree will handle the redirect/response
 });
 
 // GiveButter widgets are now active and handle donation interactions

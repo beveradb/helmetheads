@@ -815,12 +815,37 @@ html {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        min-height: 80vh;
+        padding-top: 60px;
+    }
+
+    .about, .program, .fundraising, .contact {
+        padding: 3rem 0;
+    }
+
+    .nav-container {
+        height: 60px;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+    }
+
+    .nav-menu {
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
+
     .hero-title {
         font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
     .hero-subtitle {
         font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-buttons {
@@ -838,12 +863,21 @@ html {
     }
 
     .bike-illustration {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-logo {
+        width: 120px;
     }
 
     .bike-illustration i {
         font-size: 5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
 
     .fundraising-stats {
@@ -857,28 +891,81 @@ html {
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
+    .hero {
+        min-height: 70vh;
+        padding-top: 50px;
+    }
+
+    .about, .program, .fundraising, .contact {
+        padding: 2rem 0;
     }
 
     .nav-container {
+        height: 50px;
+        padding: 0 15px;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+    }
+
+    .nav-menu {
+        top: 50px;
+        height: calc(100vh - 50px);
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+
+    .main-title {
+        font-size: 1.2rem;
+    }
+
+    .sub-title {
+        font-size: 0.7rem;
+    }
+
+    .container {
         padding: 0 15px;
     }
 
     .hero-container {
         padding: 0 15px;
+        gap: 1.5rem;
     }
 
     .hero-title {
         font-size: 1.75rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 1.2rem;
     }
 
     .section-title {
         font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .bike-illustration {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hero-logo {
+        width: 100px;
     }
 
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-card {
+        padding: 1.5rem;
     }
 
     .donation-tiers {
@@ -888,6 +975,7 @@ html {
     .hero-buttons {
         flex-direction: column;
         width: 100%;
+        gap: 0.8rem;
     }
 
     .btn {

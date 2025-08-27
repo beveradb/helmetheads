@@ -37,42 +37,11 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Fundraising progress animation
-function animateProgress() {
-    const progressFill = document.getElementById('progress-fill');
-    const raisedAmount = document.getElementById('raised-amount');
-    const bikesFunded = document.getElementById('bikes-funded');
-    
-    const targetAmount = 2450;
-    const goalAmount = 15000;
-    const targetBikes = 8;
-    const progressPercentage = (targetAmount / goalAmount) * 100;
-    
-    // Animate raised amount
-    let currentAmount = 0;
-    const amountInterval = setInterval(() => {
-        currentAmount += 50;
-        raisedAmount.textContent = `$${currentAmount.toLocaleString()}`;
-        if (currentAmount >= targetAmount) {
-            clearInterval(amountInterval);
-            raisedAmount.textContent = `$${targetAmount.toLocaleString()}`;
-        }
-    }, 30);
-    
-    // Animate bikes funded
-    let currentBikes = 0;
-    const bikesInterval = setInterval(() => {
-        currentBikes++;
-        bikesFunded.textContent = currentBikes;
-        if (currentBikes >= targetBikes) {
-            clearInterval(bikesInterval);
-        }
-    }, 200);
-    
-    // Animate progress bar
-    setTimeout(() => {
-        progressFill.style.width = `${progressPercentage}%`;
-    }, 500);
+// GiveButter widgets will handle fundraising display
+// This function is kept for future custom animations if needed
+function initializeGiveButterWidgets() {
+    // GiveButter widgets will be initialized here once the library is loaded
+    console.log('GiveButter widgets ready for initialization');
 }
 
 // Intersection Observer for animations
@@ -87,9 +56,9 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
             
-            // Trigger fundraising animation when section comes into view
+            // Initialize GiveButter widgets when fundraising section comes into view
             if (entry.target.classList.contains('fundraising')) {
-                animateProgress();
+                initializeGiveButterWidgets();
             }
         }
     });
@@ -168,10 +137,10 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     }, 1500);
 });
 
-// Donation button interaction
+// Donation button interaction - will be replaced by GiveButter widget
 document.getElementById('donate-btn').addEventListener('click', function() {
-    // In a real application, this would integrate with a payment processor
-    alert('Thank you for your interest in supporting Helmet Heads! Donation functionality would integrate with a payment processor like Stripe or PayPal in a live implementation.');
+    // Temporary placeholder until GiveButter widget is installed
+    alert('Thank you for your interest in supporting Helmet Heads! The donation system will be activated shortly with our GiveButter integration.');
 });
 
 // Add loading animation to buttons
@@ -210,20 +179,12 @@ document.querySelectorAll('.about-card, .stat-card, .tier').forEach(card => {
     });
 });
 
-// Update progress text dynamically
-function updateProgressText() {
-    const progressText = document.querySelector('.progress-text');
-    const currentAmount = 2450;
-    const goalAmount = 15000;
-    const percentage = Math.round((currentAmount / goalAmount) * 100);
-    
-    if (progressText) {
-        progressText.textContent = `${percentage}% of our goal reached!`;
-    }
+// Progress tracking will be handled by GiveButter widgets
+// This is kept for any additional custom functionality if needed
+function updateCustomProgress() {
+    // Custom progress updates can be added here if needed
+    console.log('Custom progress tracking ready');
 }
-
-// Call progress text update
-updateProgressText();
 
 // Add typing effect to hero title (optional enhancement)
 function typeWriter(element, text, speed = 100) {

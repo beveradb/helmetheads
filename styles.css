@@ -18,14 +18,14 @@ html {
 
 /* CSS Variables */
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #dc2626;
-    --accent-color: #059669;
-    --dark-color: #1f2937;
-    --light-color: #f8fafc;
+    --primary-color: #71161c;
+    --secondary-color: #71161c;
+    --accent-color: #71161c;
+    --dark-color: #1e2728;
+    --light-color: #f4ede3;
     --gray-color: #6b7280;
     --white: #ffffff;
-    --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    --gradient: linear-gradient(135deg, #71161c 0%, #5a1216 100%);
     --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     --border-radius: 12px;
     --transition: all 0.3s ease;
@@ -124,8 +124,29 @@ html {
     color: var(--primary-color);
 }
 
-.nav-logo i {
-    font-size: 2rem;
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.main-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.sub-title {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gray-color);
+    line-height: 1;
 }
 
 .nav-menu {
@@ -218,9 +239,10 @@ html {
     animation: float 3s ease-in-out infinite;
 }
 
-.bike-illustration i {
-    font-size: 8rem;
-    color: var(--white);
+.hero-logo {
+    width: 200px;
+    height: auto;
+    filter: brightness(0) invert(1);
 }
 
 @keyframes float {
@@ -530,6 +552,21 @@ html {
     font-size: 0.875rem;
 }
 
+/* GiveButter Widget Containers */
+.givebutter-widget-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+#givebutter-goal-widget {
+    max-width: 600px;
+    margin: 3rem auto;
+}
+
+#givebutter-button-widget {
+    margin: 2rem 0 1rem 0;
+}
+
 /* Contact Section */
 .contact {
     padding: 6rem 0;
@@ -694,9 +731,10 @@ html {
     font-weight: 600;
 }
 
-.footer-logo i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
+.footer-logo-img {
+    height: 30px;
+    width: auto;
+    filter: brightness(0) invert(1);
 }
 
 /* Responsive Design */

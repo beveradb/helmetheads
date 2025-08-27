@@ -137,11 +137,8 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     }, 1500);
 });
 
-// Donation button interaction - will be replaced by GiveButter widget
-document.getElementById('donate-btn').addEventListener('click', function() {
-    // Temporary placeholder until GiveButter widget is installed
-    alert('Thank you for your interest in supporting Helmet Heads! The donation system will be activated shortly with our GiveButter integration.');
-});
+// GiveButter widgets are now active and handle donation interactions
+// No additional JavaScript needed for basic widget functionality
 
 // Add loading animation to buttons
 document.querySelectorAll('.btn').forEach(btn => {

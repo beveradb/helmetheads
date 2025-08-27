@@ -113,6 +113,7 @@ html {
     justify-content: space-between;
     align-items: center;
     height: 70px;
+    gap: 2rem;
 }
 
 .nav-logo {
@@ -149,10 +150,16 @@ html {
     line-height: 1;
 }
 
+.nav-donate {
+    flex-shrink: 0;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-link {
@@ -563,8 +570,11 @@ html {
     margin: 3rem auto;
 }
 
-#givebutter-button-widget {
+#givebutter-form-widget {
     margin: 2rem 0 1rem 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Contact Section */
@@ -755,6 +765,13 @@ html {
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-donate {
+        position: absolute;
+        top: 15px;
+        right: 60px;
+        z-index: 1001;
     }
 
     .hamburger {

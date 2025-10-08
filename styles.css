@@ -154,6 +154,11 @@ html {
     flex-shrink: 0;
 }
 
+.btn-donate {
+    font-size: 0.95rem;
+    padding: 10px 24px;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -260,7 +265,7 @@ html {
 /* About Section */
 .about {
     padding: 6rem 0;
-    background: var(--white);
+    background: var(--light-color);
 }
 
 .about-grid {
@@ -273,7 +278,7 @@ html {
     text-align: center;
     padding: 2rem;
     border-radius: var(--border-radius);
-    background: var(--light-color);
+    background: var(--white);
     transition: var(--transition);
 }
 
@@ -308,6 +313,136 @@ html {
 .about-card p {
     color: var(--gray-color);
     line-height: 1.6;
+}
+
+/* Bike Trains Section */
+.bike-trains {
+    padding: 6rem 0;
+    background: var(--white);
+}
+
+.bike-trains-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.bike-trains-intro {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--gray-color);
+    margin-bottom: 2.5rem;
+}
+
+.bike-trains-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.benefit-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.benefit-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.benefit-item h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.25rem;
+}
+
+.benefit-item p {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    line-height: 1.5;
+}
+
+.bike-trains-links h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.resource-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resource-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border: 2px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: var(--transition);
+}
+
+.resource-card:hover {
+    border-color: var(--primary-color);
+    background: var(--light-color);
+    transform: translateX(5px);
+}
+
+.resource-card i {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.resource-card span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.bike-trains-gallery {
+    position: relative;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.gallery-img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow);
 }
 
 /* Program Section */
@@ -386,12 +521,20 @@ html {
 .leader-avatar {
     width: 100px;
     height: 100px;
-    background: var(--gradient);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.leader-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .leader-avatar i {
@@ -438,6 +581,195 @@ html {
 .fundraising {
     padding: 6rem 0;
     background: var(--white);
+}
+
+/* Charity Details Section */
+.charity-details {
+    padding: 6rem 0;
+    background: var(--light-color);
+}
+
+.org-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.org-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.org-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.org-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-color);
+}
+
+.org-header i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.org-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin: 0;
+}
+
+.org-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-color);
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+
+.detail-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark-color);
+    text-align: right;
+}
+
+.leadership-section {
+    margin-bottom: 3rem;
+}
+
+.leadership-section > h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--dark-color);
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.leader-card-org {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.leader-card-org:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.leader-photo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.leader-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leader-card-org h4 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.leader-role {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.leader-bio {
+    color: var(--gray-color);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.disclaimer-section {
+    margin-top: 2rem;
+}
+
+.disclaimer-card {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+}
+
+.disclaimer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.disclaimer-header i {
+    font-size: 1.25rem;
+    color: #f59e0b;
+}
+
+.disclaimer-header h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #92400e;
+    margin: 0;
+}
+
+.disclaimer-card p {
+    color: #78350f;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.disclaimer-card p:last-child {
+    margin-bottom: 0;
 }
 
 .fundraising-intro {
@@ -503,29 +835,38 @@ html {
     font-weight: 500;
 }
 
-.donation-info {
-    max-width: 800px;
+.donation-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-.donation-info h3 {
-    font-size: 1.75rem;
+.donation-form-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.donation-info-column h3 {
+    font-size: 1.5rem;
     font-weight: 600;
-    text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     color: var(--dark-color);
 }
 
 .donation-tiers {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .tier {
-    text-align: center;
-    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
     background: var(--light-color);
     border-radius: var(--border-radius);
     border: 2px solid transparent;
@@ -534,19 +875,22 @@ html {
 
 .tier:hover {
     border-color: var(--primary-color);
-    transform: translateY(-2px);
+    transform: translateX(3px);
 }
 
 .tier h4 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    min-width: 80px;
+    flex-shrink: 0;
 }
 
 .tier p {
     color: var(--gray-color);
     font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
 }
 
 .donate-button-container {
@@ -557,7 +901,8 @@ html {
     margin-top: 1rem;
     color: var(--gray-color);
     font-size: 0.875rem;
-    text-align: center;
+    text-align: left;
+    font-style: italic;
 }
 
 /* GiveButter Widget Containers */
@@ -572,16 +917,13 @@ html {
 }
 
 #givebutter-form-widget {
-    margin: 2rem 0 1rem 0;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 0 1rem 0;
 }
 
 /* Contact Section */
 .contact {
     padding: 6rem 0;
-    background: var(--light-color);
+    background: var(--white);
 }
 
 .contact-intro {
@@ -699,38 +1041,60 @@ html {
     color: var(--dark-color);
 }
 
-.social-link {
-    display: inline-flex;
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.social-button {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
     background: var(--light-color);
-    color: var(--primary-color);
-    border-radius: 50%;
+    color: var(--dark-color);
+    border-radius: var(--border-radius);
     text-decoration: none;
-    margin-right: 12px;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.social-button:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateX(5px);
+}
+
+.social-button i {
+    font-size: 1.25rem;
+    color: var(--primary-color);
     transition: var(--transition);
 }
 
-.social-link:hover {
-    background: var(--primary-color);
+.social-button:hover i {
     color: var(--white);
-    transform: translateY(-2px);
 }
 
 /* Footer */
 .footer {
     background: var(--dark-color);
     color: var(--white);
-    padding: 2rem 0;
-    text-align: center;
+    padding: 3rem 0 1.5rem;
 }
 
-.footer-content {
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-about {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
 }
 
@@ -746,6 +1110,108 @@ html {
     height: 30px;
     width: auto;
     filter: brightness(0) invert(1);
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.footer-ein {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.footer-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-section li {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Form note styling improvement */
+.form-note {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.form-note small {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--gray-color);
+}
+
+.form-note a {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 /* Responsive Design */
@@ -811,6 +1277,30 @@ html {
 
     .section-title {
         font-size: 2rem;
+    }
+
+    .bike-trains-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .org-overview {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .footer-about {
+        grid-column: 1 / -1;
     }
 }
 
@@ -885,8 +1375,21 @@ html {
         gap: 1rem;
     }
 
-    .donation-tiers {
-        grid-template-columns: repeat(2, 1fr);
+    .donation-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .donation-info-column h3 {
+        text-align: center;
+    }
+
+    .gallery-grid {
+        gap: 0.75rem;
+    }
+
+    .gallery-img {
+        height: 180px;
     }
 }
 
@@ -968,10 +1471,6 @@ html {
         padding: 1.5rem;
     }
 
-    .donation-tiers {
-        grid-template-columns: 1fr;
-    }
-
     .hero-buttons {
         flex-direction: column;
         width: 100%;
@@ -981,5 +1480,46 @@ html {
     .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .gallery-img {
+        height: 160px;
+    }
+
+    .benefit-item {
+        padding: 1rem;
+    }
+
+    .resource-card {
+        padding: 0.875rem 1rem;
+    }
+
+    .org-card {
+        padding: 1.5rem;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .detail-value {
+        text-align: left;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-about {
+        grid-column: 1;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
     }
 }

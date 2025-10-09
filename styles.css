@@ -82,7 +82,7 @@ html {
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: var(--dark-color);
 }
 
@@ -193,12 +193,52 @@ html {
     transition: var(--transition);
 }
 
-/* Hero Section */
+/* Automatic alternating section backgrounds */
+/* All sections default to white */
+section {
+    background: var(--white);
+}
+
+/* Even-numbered sections get light background (creates alternating pattern) */
+section:nth-of-type(even) {
+    background: var(--light-color);
+}
+
+/* Smart card backgrounds - contrast with section background */
+/* Cards in white sections (odd) get light background */
+section:nth-of-type(odd) .about-card,
+section:nth-of-type(odd) .program-box,
+section:nth-of-type(odd) .school-card,
+section:nth-of-type(odd) .leader-card-pilot,
+section:nth-of-type(odd) .pilot-timeline,
+section:nth-of-type(odd) .tier,
+section:nth-of-type(odd) .org-card,
+section:nth-of-type(odd) .leader-card-org,
+section:nth-of-type(odd) .contact-info,
+section:nth-of-type(odd) .signup-form {
+    background: var(--light-color);
+}
+
+/* Cards in light sections (even) get white background */
+section:nth-of-type(even) .about-card,
+section:nth-of-type(even) .program-box,
+section:nth-of-type(even) .school-card,
+section:nth-of-type(even) .leader-card-pilot,
+section:nth-of-type(even) .pilot-timeline,
+section:nth-of-type(even) .tier,
+section:nth-of-type(even) .org-card,
+section:nth-of-type(even) .leader-card-org,
+section:nth-of-type(even) .contact-info,
+section:nth-of-type(even) .signup-form {
+    background: var(--white);
+}
+
+/* Hero Section - override with special gradient */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
     padding-top: 70px;
 }
 
@@ -265,7 +305,18 @@ html {
 /* About Section */
 .about {
     padding: 6rem 0;
-    background: var(--light-color);
+}
+
+.about-intro {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.about-intro p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--gray-color);
 }
 
 .about-grid {
@@ -278,7 +329,6 @@ html {
     text-align: center;
     padding: 2rem;
     border-radius: var(--border-radius);
-    background: var(--white);
     transition: var(--transition);
 }
 
@@ -318,7 +368,6 @@ html {
 /* Bike Trains Section */
 .bike-trains {
     padding: 6rem 0;
-    background: var(--white);
 }
 
 .bike-trains-content {
@@ -448,101 +497,385 @@ html {
 /* Program Section */
 .program {
     padding: 6rem 0;
-    background: var(--light-color);
 }
 
-.program-content {
+.program-layout {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
-.program-info h3 {
-    font-size: 1.75rem;
-    font-weight: 600;
+.program-column {
+    display: flex;
+}
+
+.program-box {
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    flex: 1;
+}
+
+.program-box:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.program-box-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-color);
+}
+
+.program-box-header i {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+}
+
+.program-box-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
     color: var(--dark-color);
+    margin: 0;
 }
 
 .program-features {
     list-style: none;
-    margin-bottom: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .program-features li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
-    padding: 8px 0;
+    padding: 10px 0;
     color: var(--gray-color);
+    line-height: 1.5;
 }
 
 .program-features i {
     color: var(--accent-color);
     font-weight: bold;
+    margin-top: 3px;
+    flex-shrink: 0;
 }
 
-.schedule {
-    background: var(--white);
-    padding: 2rem;
+.teacher-cta {
+    margin-top: 3rem;
+}
+
+.cta-content {
+    background: var(--gradient);
     border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.schedule h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--dark-color);
-}
-
-.schedule-item {
-    display: flex;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
     align-items: center;
-    gap: 12px;
-    padding: 8px 0;
-    color: var(--gray-color);
-}
-
-.schedule-item i {
-    color: var(--primary-color);
-    width: 16px;
-}
-
-.leader-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    text-align: center;
 }
 
-.leader-avatar {
-    width: 100px;
-    height: 100px;
+.cta-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
+    flex-shrink: 0;
+}
+
+.cta-icon i {
+    font-size: 2.5rem;
+    color: var(--white);
+}
+
+.cta-text h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--white);
+    margin: 0 0 0.5rem 0;
+}
+
+.cta-text p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.cta-button {
+    flex-shrink: 0;
+}
+
+.cta-button .btn {
+    background: var(--white);
+    color: var(--primary-color);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.cta-button .btn:hover {
+    background: var(--light-color);
+    transform: translateY(-2px);
+}
+
+/* Pilot Program Section */
+.pilot-program {
+    padding: 6rem 0;
+}
+
+.pilot-intro {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.pilot-intro p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--gray-color);
+}
+
+.pilot-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.pilot-top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.school-card {
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.school-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.school-logo-large {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
     overflow: hidden;
-    border: 3px solid var(--primary-color);
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    padding: 1rem;
+}
+
+.school-logo-large img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.school-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.school-subtitle {
+    margin-bottom: 1rem;
+}
+
+.school-website-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.school-website-link:hover {
+    color: var(--accent-color);
+}
+
+.school-website-link i {
+    font-size: 0.875rem;
+}
+
+.school-description {
+    color: var(--gray-color);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.school-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.fact {
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.school-note {
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(59, 130, 246, 0.2);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.school-note i {
+    font-size: 1.125rem;
+    color: #3b82f6;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.school-note p {
+    color: #1e40af;
+    line-height: 1.5;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.pilot-timeline {
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.pilot-timeline h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.timeline-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+}
+
+.timeline-items::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 16.67%;
+    right: 16.67%;
+    height: 2px;
+    background: #e5e7eb;
+    z-index: 0;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    text-align: center;
+}
+
+.timeline-marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px #e5e7eb;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-item.active .timeline-marker {
+    background: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.timeline-content h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.leader-card-pilot {
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: var(--transition);
+    flex: 1;
+}
+
+.leader-card-pilot:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.leader-avatar-large {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.leader-avatar img {
+.leader-avatar-large img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.leader-avatar i {
-    font-size: 3rem;
-    color: var(--white);
-}
-
-.leader-card h4 {
+.leader-card-pilot h4 {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
@@ -553,12 +886,14 @@ html {
     color: var(--primary-color);
     font-weight: 500;
     margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
-.leader-card p {
+.leader-description {
     color: var(--gray-color);
-    margin-bottom: 1.5rem;
     line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
 }
 
 .leader-qualities {
@@ -569,24 +904,53 @@ html {
 }
 
 .quality {
-    background: var(--light-color);
+    background: var(--white);
     color: var(--primary-color);
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.875rem;
     font-weight: 500;
 }
 
+/* Program Intro */
+.program-intro {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.program-intro p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--gray-color);
+    margin-bottom: 1rem;
+}
+
+.program-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.program-intro a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.program-intro a:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
 /* Fundraising Section */
 .fundraising {
     padding: 6rem 0;
-    background: var(--white);
 }
 
 /* Charity Details Section */
 .charity-details {
     padding: 6rem 0;
-    background: var(--light-color);
 }
 
 .org-overview {
@@ -597,7 +961,6 @@ html {
 }
 
 .org-card {
-    background: var(--white);
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -682,7 +1045,6 @@ html {
 }
 
 .leader-card-org {
-    background: var(--white);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -867,7 +1229,6 @@ html {
     align-items: flex-start;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background: var(--light-color);
     border-radius: var(--border-radius);
     border: 2px solid transparent;
     transition: var(--transition);
@@ -923,7 +1284,6 @@ html {
 /* Contact Section */
 .contact {
     padding: 6rem 0;
-    background: var(--white);
 }
 
 .contact-intro {
@@ -944,7 +1304,6 @@ html {
 }
 
 .signup-form {
-    background: var(--white);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
@@ -1001,7 +1360,6 @@ html {
 }
 
 .contact-info {
-    background: var(--white);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
@@ -1267,8 +1625,41 @@ html {
         font-size: 2.5rem;
     }
 
-    .program-content {
+    .program-layout {
         grid-template-columns: 1fr;
+    }
+
+    .program-intro {
+        text-align: left;
+    }
+
+    .program-intro p {
+        font-size: 1rem;
+    }
+
+    .cta-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+
+    .cta-icon {
+        margin: 0 auto;
+    }
+
+    .pilot-top-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .timeline-items {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .timeline-items::before {
+        display: none;
     }
 
     .contact-content {
@@ -1444,6 +1835,10 @@ html {
         margin-bottom: 0.8rem;
     }
 
+    .program-intro p {
+        font-size: 0.95rem;
+    }
+
     .hero-subtitle {
         margin-bottom: 1.2rem;
     }
@@ -1492,6 +1887,56 @@ html {
 
     .resource-card {
         padding: 0.875rem 1rem;
+    }
+
+    .program-box {
+        padding: 1.5rem;
+    }
+
+    .program-box-header {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .program-box-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .cta-content {
+        padding: 1.5rem;
+    }
+
+    .cta-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .cta-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .cta-icon i {
+        font-size: 2rem;
+    }
+
+    .pilot-timeline,
+    .school-card,
+    .leader-card-pilot {
+        padding: 1.5rem;
+    }
+
+    .school-logo-large,
+    .leader-avatar-large {
+        width: 120px;
+        height: 120px;
+    }
+
+    .school-note {
+        font-size: 0.8rem;
+    }
+
+    .school-description {
+        font-size: 0.9rem;
     }
 
     .org-card {

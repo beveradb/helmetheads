@@ -228,7 +228,7 @@ section:nth-of-type(odd) .school-card,
 section:nth-of-type(odd) .leader-card-pilot,
 section:nth-of-type(odd) .pilot-timeline,
 section:nth-of-type(odd) .tier,
-section:nth-of-type(odd) .org-card,
+section:nth-of-type(odd) .org-info-group,
 section:nth-of-type(odd) .leader-card-org,
 section:nth-of-type(odd) .contact-info,
 section:nth-of-type(odd) .signup-form {
@@ -242,7 +242,7 @@ section:nth-of-type(even) .school-card,
 section:nth-of-type(even) .leader-card-pilot,
 section:nth-of-type(even) .pilot-timeline,
 section:nth-of-type(even) .tier,
-section:nth-of-type(even) .org-card,
+section:nth-of-type(even) .org-info-group,
 section:nth-of-type(even) .leader-card-org,
 section:nth-of-type(even) .contact-info,
 section:nth-of-type(even) .signup-form {
@@ -1019,81 +1019,90 @@ section:nth-of-type(even) .signup-form {
     padding: 6rem 0;
 }
 
-.org-overview {
+.org-intro {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.org-intro p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--gray-color);
+}
+
+.org-info-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 3rem;
 }
 
-.org-card {
+.org-info-group {
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
 }
 
-.org-card:hover {
+.org-info-group:hover {
     box-shadow: var(--shadow);
     transform: translateY(-2px);
 }
 
-.org-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--light-color);
-}
-
-.org-header i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-}
-
-.org-header h3 {
+.org-info-group h3 {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--dark-color);
-    margin: 0;
-}
-
-.org-details {
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-color);
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.detail-row {
+.org-info-group h3 i {
+    font-size: 1.125rem;
+    color: var(--primary-color);
+}
+
+.info-item {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #f0f0f0;
+    gap: 0.75rem;
+    margin-bottom: 1.125rem;
+    align-items: flex-start;
 }
 
-.detail-row:last-child {
-    border-bottom: none;
+.info-item:last-child {
+    margin-bottom: 0;
 }
 
-.detail-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--gray-color);
+.info-item > i {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-top: 0.25rem;
     flex-shrink: 0;
-    margin-right: 1rem;
+    width: 20px;
 }
 
-.detail-value {
-    font-size: 0.95rem;
-    font-weight: 500;
+.info-item strong {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
     color: var(--dark-color);
-    text-align: right;
+    margin-bottom: 0.25rem;
+}
+
+.info-item p {
+    font-size: 0.875rem;
+    color: var(--gray-color);
+    margin: 0;
+    line-height: 1.5;
 }
 
 .leadership-section {
-    margin-bottom: 3rem;
+    margin-top: 3rem;
 }
 
 .leadership-section > h3 {
@@ -1751,7 +1760,7 @@ section:nth-of-type(even) .signup-form {
         gap: 3rem;
     }
 
-    .org-overview {
+    .org-info-row {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }

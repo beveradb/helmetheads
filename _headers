@@ -1,0 +1,41 @@
+# Cache control for Helmet Heads website
+
+# HTML files - no caching, always check for updates
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Root index - no caching
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# CSS and JS files - cache but revalidate
+/*.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Images - cache for 1 hour (can increase this)
+/*.jpg
+  Cache-Control: public, max-age=3600, immutable
+
+/*.png
+  Cache-Control: public, max-age=3600, immutable
+
+/*.svg
+  Cache-Control: public, max-age=3600, immutable
+
+/*.webp
+  Cache-Control: public, max-age=3600, immutable
+
+# Videos - cache for 1 hour
+/*.mp4
+  Cache-Control: public, max-age=3600, immutable
+
+# Fonts (if you add any) - cache for longer
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+

@@ -93,6 +93,16 @@ html {
     -webkit-text-fill-color: transparent;
 }
 
+/* Override highlight in hero section for better visibility on video */
+.hero .highlight {
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: #ffd93d;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -123,6 +133,12 @@ html {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-logo:hover {
+    opacity: 0.8;
 }
 
 .logo-img {
@@ -164,7 +180,7 @@ html {
     list-style: none;
     gap: 2rem;
     flex: 1;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .nav-link {
@@ -233,13 +249,35 @@ section:nth-of-type(even) .signup-form {
     background: var(--white);
 }
 
-/* Hero Section - override with special gradient */
+/* Hero Section - override with video background */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
     padding-top: 70px;
+    position: relative;
+    overflow: hidden;
+    background: #1e2728 !important; /* Fallback color */
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65); /* Darker overlay for better text contrast */
+    z-index: 1;
 }
 
 .hero-container {
@@ -250,6 +288,8 @@ section:nth-of-type(even) .signup-form {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title {
@@ -257,20 +297,46 @@ section:nth-of-type(even) .signup-form {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: var(--dark-color);
+    color: var(--white);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: var(--gray-color);
+    color: var(--white);
     margin-bottom: 2rem;
     line-height: 1.6;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+/* Enhance buttons in hero section for better visibility on video */
+.hero .btn-primary {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero .btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 2px solid var(--white);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero .btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero-image {
@@ -287,12 +353,12 @@ section:nth-of-type(even) .signup-form {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     animation: float 3s ease-in-out infinite;
 }
 
 .hero-logo {
-    width: 200px;
+    width: 250px;
     height: auto;
     filter: brightness(0) invert(1);
 }
@@ -1574,6 +1640,10 @@ section:nth-of-type(even) .signup-form {
 
 /* Responsive Design */
 @media (max-width: 968px) {
+    .nav-container {
+        gap: 0.75rem;
+    }
+    
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -1582,10 +1652,11 @@ section:nth-of-type(even) .signup-form {
         height: calc(100vh - 70px);
         background: var(--white);
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: flex-end;
         align-items: center;
         padding-top: 2rem;
         transition: var(--transition);
+        gap: 0;
     }
 
     .nav-menu.active {
@@ -1593,14 +1664,19 @@ section:nth-of-type(even) .signup-form {
     }
 
     .nav-donate {
-        position: absolute;
-        top: 15px;
-        right: 60px;
-        z-index: 1001;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+    }
+    
+    .btn-donate {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+        white-space: nowrap;
     }
 
     .hamburger {
         display: flex;
+        flex-shrink: 0;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -1696,6 +1772,16 @@ section:nth-of-type(even) .signup-form {
 }
 
 @media (max-width: 768px) {
+    /* Hide video on mobile to save bandwidth */
+    .hero-video {
+        display: none;
+    }
+    
+    /* Use background image fallback on mobile */
+    .hero {
+        background: url('hero-bg-fallback.jpg') center center / cover no-repeat !important;
+    }
+    
     .hero {
         min-height: 80vh;
         padding-top: 60px;
@@ -1707,6 +1793,7 @@ section:nth-of-type(even) .signup-form {
 
     .nav-container {
         height: 60px;
+        gap: 0.5rem;
     }
 
     .navbar {
@@ -1717,6 +1804,11 @@ section:nth-of-type(even) .signup-form {
     .nav-menu {
         top: 60px;
         height: calc(100vh - 60px);
+    }
+    
+    .btn-donate {
+        font-size: 0.85rem;
+        padding: 7px 18px;
     }
 
     .hero-title {
@@ -1796,7 +1888,8 @@ section:nth-of-type(even) .signup-form {
 
     .nav-container {
         height: 50px;
-        padding: 0 15px;
+        padding: 0 10px;
+        gap: 0.4rem;
     }
 
     .navbar {
@@ -1807,6 +1900,15 @@ section:nth-of-type(even) .signup-form {
     .nav-menu {
         top: 50px;
         height: calc(100vh - 50px);
+    }
+    
+    .nav-donate {
+        margin-right: 0.25rem;
+    }
+    
+    .btn-donate {
+        font-size: 0.8rem;
+        padding: 6px 14px;
     }
 
     .logo-img {

@@ -1788,7 +1788,7 @@ section:nth-of-type(even) .signup-form {
     
     /* Use background image fallback on mobile */
     .hero {
-        background: url('hero-bg-fallback.jpg') center center / cover no-repeat !important;
+        background: url('hero-bg-fallback.avif') center center / cover no-repeat !important;
     }
     
     .hero {

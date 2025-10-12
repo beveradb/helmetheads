@@ -1,3 +1,23 @@
+// Conditionally load hero video only on desktop (save bandwidth on mobile)
+function loadHeroVideo() {
+    const video = document.querySelector('.hero-video');
+    if (video && window.innerWidth >= 768) {
+        // Only load video on desktop/tablet
+        const source = video.querySelector('source');
+        if (source && !source.src) {
+            source.src = source.dataset.src;
+            video.load();
+        }
+    }
+}
+
+// Run on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadHeroVideo);
+} else {
+    loadHeroVideo();
+}
+
 // Mobile navigation toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');

@@ -1,6 +1,6 @@
 # Helmet Heads
 
-A 501(c)(3) nonprofit organization providing cycling opportunities for South Carolina youth through localized high school cycling clubs.
+A 501(c)(3) nonprofit empowering South Carolina teenagers with bikes, community, and the freedom to explore - building cycling clubs that make riding accessible to all students.
 
 ## Website Styling System
 

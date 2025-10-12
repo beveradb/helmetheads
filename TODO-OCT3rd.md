@@ -1,4 +1,4 @@
-## Helmet Heads — To‑Do List (Oct 3 Meeting)
+## Helmet Heads  -  To‑Do List (Oct 3 Meeting)
 
 Concise, actionable tasks combining your notes and transcript highlights. Check off as you go.
 

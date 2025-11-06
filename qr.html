@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"></noscript>
+    
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -65,7 +66,7 @@
         .qr-page {
             min-height: 100vh;
             background: var(--light-color);
-            padding: 1rem 0;
+            padding: 1.5rem 0;
         }
         
         .qr-container {
@@ -77,21 +78,46 @@
         .qr-header {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .qr-header-left {
+            display: flex;
+            align-items: center;
             gap: 0.75rem;
-            margin-bottom: 1.25rem;
         }
         
         .qr-logo {
-            width: 50px;
+            width: 60px;
             height: auto;
         }
         
         .qr-brand-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--accent-maroon);
             margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Bicycle Animation */
+        .bike-animation {
+            width: 100px;
+            height: 72px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .bike-animation canvas {
+            width: 100%;
+            height: 100%;
+            filter: brightness(0) saturate(100%) invert(12%) sepia(25%) saturate(6701%) hue-rotate(338deg) brightness(99%) contrast(98%);
         }
         
         .qr-title {
@@ -107,12 +133,12 @@
             font-size: 1rem;
             line-height: 1.6;
             color: var(--dark-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-align: center;
         }
         
         .qr-pitch p {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
         
         .qr-pitch p:last-child {
@@ -124,8 +150,73 @@
             line-height: 1.5;
             color: var(--dark-color);
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             font-weight: 500;
+        }
+        
+        /* CTA Button Container */
+        .qr-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.5rem auto 2rem auto;
+            flex-wrap: wrap;
+        }
+        
+        /* CTA Button Base Styles */
+        .qr-cta-btn {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .qr-cta-btn i {
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+        
+        /* Primary Button - Green */
+        .qr-cta-btn-primary {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+        
+        .qr-cta-btn-primary:hover {
+            background: #248276;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(42, 157, 143, 0.4);
+        }
+        
+        .qr-cta-btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        /* Secondary Button - Maroon */
+        .qr-cta-btn-secondary {
+            background: var(--accent-maroon);
+            color: var(--white);
+        }
+        
+        .qr-cta-btn-secondary:hover {
+            background: #8a1b22;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(113, 22, 28, 0.4);
+        }
+        
+        .qr-cta-btn-secondary:active {
+            transform: translateY(0);
         }
         
         /* Main content area for side-by-side layout on desktop */
@@ -133,7 +224,7 @@
             display: flex;
             gap: 2rem;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         
         .qr-video-column {
@@ -302,26 +393,29 @@
         }
 
         .qr-donation-wrapper {
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
         }
 
         .qr-learn-more-wrapper {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         .qr-donation-heading {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+            font-weight: 400;
             color: var(--dark-color);
             text-align: center;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
 
         .qr-footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             text-align: center;
         }
@@ -373,7 +467,7 @@
             color: var(--white);
             padding: 1.25rem;
             border-radius: var(--border-radius);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-align: center;
         }
         
@@ -388,9 +482,13 @@
         }
         
         .qr-thank-you h3 {
-            font-size: 1.25rem;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            font-weight: 400;
             margin-bottom: 0.5rem;
             color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
         
         .qr-thank-you p {
@@ -416,11 +514,14 @@
                 justify-content: center;
                 width: 100%;
             }
+            .qr-cta-buttons {
+                max-width: 460px; /* Match video wrapper width */
+            }
         }
 
         @media (max-width: 768px) {
             .qr-page {
-                padding: 0.75rem 0;
+                padding: 1rem 0;
             }
             
             .qr-container {
@@ -428,16 +529,21 @@
             }
             
             .qr-header {
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
                 gap: 0.5rem;
             }
             
             .qr-logo {
-                width: 45px;
+                width: 50px;
             }
             
             .qr-brand-name {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            .bike-animation {
+                width: 70px;
+                height: 50px;
             }
             
             .qr-content-wrapper {
@@ -447,11 +553,21 @@
             
             .qr-pitch {
                 font-size: 0.95rem;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
             }
             
             .qr-cta {
                 font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+            
+            .qr-cta-buttons {
+                gap: 0.875rem;
+            }
+            
+            .qr-cta-btn {
+                font-size: 0.95rem;
+                padding: 0.875rem 1.25rem;
             }
             
             .qr-widget-section {
@@ -473,16 +589,16 @@
             }
             
             .qr-video-container {
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
             }
 
             .qr-donation-heading {
-                font-size: 1.25rem;
+                font-size: 2rem;
             }
 
             .qr-footer {
-                margin-top: 2rem;
-                padding-top: 1.5rem;
+                margin-top: 1.5rem;
+                padding-top: 1.25rem;
             }
 
             .qr-social-links {
@@ -497,16 +613,68 @@
         }
         
         @media (max-width: 480px) {
+            .qr-page {
+                padding: 0.75rem 0;
+            }
+
+            .qr-header {
+                margin-bottom: 0.5rem;
+            }
+
+            .qr-logo {
+                width: 45px;
+            }
+
             .qr-brand-name {
-                font-size: 1.875rem;
+                font-size: 2.25rem;
+            }
+            
+            .bike-animation {
+                width: 70px;
+                height: 50px;
             }
             
             .qr-pitch {
                 font-size: 0.9rem;
+                margin-bottom: 0.5rem;
             }
             
             .qr-cta {
                 font-size: 0.9rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .qr-cta-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                margin: 1rem 0;
+            }
+            
+            .qr-cta-btn {
+                max-width: 100%;
+                font-size: 0.9rem;
+                padding: 0.875rem 1rem;
+            }
+
+            .qr-content-wrapper {
+                gap: 0.75rem;
+            }
+            
+            .qr-video-container {
+                margin-bottom: 0.5rem;
+            }
+
+            .qr-donation-heading {
+                font-size: 1.875rem;
+            }
+
+            .qr-donation-wrapper {
+                margin-top: 1rem;
+            }
+
+            .qr-footer {
+                margin-top: 1.25rem;
+                padding-top: 1rem;
             }
             
             .play-button {
@@ -526,8 +694,13 @@
         <div class="qr-container">
             <!-- Header with logo and brand name -->
             <div class="qr-header">
-                <img src="logo.svg" alt="Helmet Heads Logo" class="qr-logo">
-                <h1 class="qr-brand-name">Helmet Heads</h1>
+                <div class="qr-header-left">
+                    <img src="logo.svg" alt="Helmet Heads Logo" class="qr-logo">
+                    <h1 class="qr-brand-name">Helmet Heads</h1>
+                </div>
+                <div class="bike-animation">
+                    <canvas id="bike-canvas" width="140" height="100"></canvas>
+                </div>
             </div>
 
             <!-- Personalized Pitch (dynamically updated by JavaScript) -->
@@ -537,9 +710,17 @@
                 <p>We've successfully raised initial funds and delivered bikes to students at BCHS in Cayce, but we want to raise more to help additional kids join the club and expand to other schools across South Carolina.</p>
             </div>
 
-            <!-- Call to Action -->
-            <p class="qr-cta">Like what we're doing? <a href="#signup-section" class="cta-link">Join our email list</a> - it really helps us out.</p>
-            <p class="qr-cta">Really like what we're doing? <a href="#donation-section" class="donate-now">Donate now!</a></p>
+            <!-- Call to Action Buttons -->
+            <div class="qr-cta-buttons">
+                <a href="#signup-section" class="qr-cta-btn qr-cta-btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    <span>Join Our Email List</span>
+                </a>
+                <a href="#donation-section" class="qr-cta-btn qr-cta-btn-secondary">
+                    <i class="fas fa-heart"></i>
+                    <span>Donate Now</span>
+                </a>
+            </div>
 
             <!-- Thank You Message (hidden initially) -->
             <div class="qr-thank-you" id="thank-you-message">
@@ -947,6 +1128,21 @@
                 });
             }
         };
+    </script>
+
+    <!-- Initialize DotLottie animation -->
+    <script type="module">
+        import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
+
+        const canvas = document.getElementById("bike-canvas");
+        if (canvas) {
+            new DotLottie({
+                autoplay: true,
+                loop: true,
+                canvas: canvas,
+                src: "yellow-bike.lottie"
+            });
+        }
     </script>
 </body>
 

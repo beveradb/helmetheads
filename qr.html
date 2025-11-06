@@ -65,7 +65,7 @@
         .qr-page {
             min-height: 100vh;
             background: var(--light-color);
-            padding: 2rem 0;
+            padding: 1rem 0;
         }
         
         .qr-container {
@@ -75,84 +75,90 @@
         }
         
         .qr-header {
-            text-align: center;
-            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
         }
         
         .qr-logo {
-            width: 80px;
+            width: 50px;
             height: auto;
-            margin-bottom: 1.5rem;
+        }
+        
+        .qr-brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
         }
         
         .qr-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 0.5rem;
+            display: none;
         }
         
         .qr-subtitle {
-            font-size: 1.125rem;
-            color: var(--gray-color);
-            margin-bottom: 2rem;
+            display: none;
         }
         
-        .qr-section {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-        
-        .qr-video-container {
-            margin-bottom: 2rem;
-        }
-        
-        .qr-video {
-            width: 100%;
-            border-radius: var(--border-radius);
-        }
-        
-        .qr-summary {
-            line-height: 1.8;
-            color: var(--gray-color);
+        /* Personalized pitch section */
+        .qr-pitch {
             font-size: 1rem;
-        }
-        
-        .qr-summary h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
+            line-height: 1.6;
             color: var(--dark-color);
             margin-bottom: 1rem;
+            text-align: center;
         }
         
-        .qr-summary p {
-            margin-bottom: 1rem;
+        .qr-pitch p {
+            margin-bottom: 0.75rem;
         }
         
-        .qr-summary p:last-child {
+        .qr-pitch p:last-child {
             margin-bottom: 0;
         }
         
+        .qr-cta {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        /* Main content area for side-by-side layout on desktop */
+        .qr-content-wrapper {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .qr-video-column {
+            flex: 1;
+        }
+        
+        .qr-signup-column {
+            flex: 1;
+        }
+        
+        /* Email signup widget - subtle background */
         .qr-widget-section {
-            margin-bottom: 2rem;
-            background: var(--white);
+            margin-bottom: 1rem;
+            background: rgba(244, 237, 227, 0.3);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
         
-        /* Constrain GiveButter widget to match section width */
+        /* Constrain GiveButter widget */
         .qr-widget-section givebutter-widget {
             display: block;
             max-width: 100%;
             width: 100%;
         }
         
-        /* Target GiveButter widget iframe and internal containers */
         .qr-widget-section givebutter-widget iframe,
         .qr-widget-section givebutter-widget > div,
         .qr-widget-section givebutter-widget [class*="widget"],
@@ -163,13 +169,98 @@
             box-sizing: border-box !important;
         }
         
+        /* Video section with custom play button */
+        .qr-video-container {
+            margin-bottom: 0;
+            position: relative;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .qr-video {
+            width: 100%;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+        
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-play-overlay:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-play-overlay.hidden {
+            display: none;
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(113, 22, 28, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .video-play-overlay:hover .play-button {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(113, 22, 28, 0.5);
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(113, 22, 28, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(113, 22, 28, 0.6);
+            }
+        }
+        
+        .play-button i {
+            color: var(--white);
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+        
+        .play-message {
+            color: var(--white);
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            max-width: 300px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Thank you message */
         .qr-thank-you {
             display: none;
             background: var(--gradient);
             color: var(--white);
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: var(--border-radius);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             text-align: center;
         }
         
@@ -178,13 +269,13 @@
         }
         
         .qr-thank-you i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
             display: block;
         }
         
         .qr-thank-you h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: var(--white);
         }
@@ -192,13 +283,10 @@
         .qr-thank-you p {
             color: rgba(255, 255, 255, 0.95);
             margin: 0;
+            font-size: 0.95rem;
         }
         
-        .qr-widget-container {
-            margin: 0 auto;
-            max-width: 600px;
-        }
-        
+        /* Donation section (hidden until after signup) */
         .qr-donation-section {
             display: none;
         }
@@ -207,25 +295,86 @@
             display: block;
         }
         
+        /* Mobile optimizations */
         @media (max-width: 768px) {
             .qr-page {
-                padding: 1rem 0;
+                padding: 0.75rem 0;
             }
             
             .qr-container {
                 padding: 0 15px;
             }
             
-            .qr-title {
+            .qr-header {
+                margin-bottom: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .qr-logo {
+                width: 45px;
+            }
+            
+            .qr-brand-name {
+                font-size: 1.25rem;
+            }
+            
+            .qr-content-wrapper {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .qr-pitch {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+            
+            .qr-cta {
+                font-size: 0.95rem;
+            }
+            
+            .qr-widget-section {
+                padding: 1rem;
+            }
+            
+            .play-button {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .play-button i {
+                font-size: 1.75rem;
+            }
+            
+            .play-message {
+                font-size: 0.85rem;
+                max-width: 250px;
+            }
+            
+            .qr-video-container {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .qr-brand-name {
+                font-size: 1.1rem;
+            }
+            
+            .qr-pitch {
+                font-size: 0.9rem;
+            }
+            
+            .qr-cta {
+                font-size: 0.9rem;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .play-button i {
                 font-size: 1.5rem;
-            }
-            
-            .qr-subtitle {
-                font-size: 1rem;
-            }
-            
-            .qr-section {
-                padding: 1.5rem;
             }
         }
     </style>
@@ -234,47 +383,58 @@
 <body>
     <div class="qr-page">
         <div class="qr-container">
-            <!-- Header -->
+            <!-- Header with logo and brand name -->
             <div class="qr-header">
                 <img src="logo.svg" alt="Helmet Heads Logo" class="qr-logo">
-                <h1 class="qr-title">Welcome to Helmet Heads</h1>
-                <p class="qr-subtitle">Empowering South Carolina teenagers with bikes, community, and the freedom to explore</p>
+                <h1 class="qr-brand-name">Helmet Heads</h1>
             </div>
 
-            <!-- Video Section -->
-            <div class="qr-video-container">
-                <video class="qr-video" controls poster="helmetheads-elevator-pitch-still.avif" preload="metadata">
-                    <source src="helmetheads-elevator-pitch.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <!-- Personalized Pitch (dynamically updated by JavaScript) -->
+            <div class="qr-pitch" id="personalized-pitch">
+                <p><strong id="greeting-text">Welcome!</strong> Helmet Heads is a 501(c)(3) nonprofit empowering South Carolina teenagers with bikes, community, and the freedom to explore through teacher-led cycling clubs.</p>
+                <p>We've successfully raised initial funds and delivered bikes to students at BCHS in Cayce, but we want to raise more to help additional kids join the club and expand to other schools across South Carolina.</p>
             </div>
 
-            <!-- Summary Section -->
-            <div class="qr-section">
-                <div class="qr-summary">
-                    <h3>About Helmet Heads</h3>
-                    <p>
-                        Helmet Heads is a 501(c)(3) nonprofit organization that empowers South Carolina teenagers through cycling. We provide bikes, safety gear, and community support to help students build confidence, physical fitness, and lasting friendships.
-                    </p>
-                    <p>
-                        Our pilot program at BCHS in Cayce is helping us refine our approach before expanding to other schools across South Carolina. We're currently fundraising to get 20 students on bikes.
-                    </p>
-                </div>
-            </div>
+            <!-- Call to Action -->
+            <p class="qr-cta">If you're interested in our mission, please sign up below - it really helps us out!</p>
 
             <!-- Thank You Message (hidden initially) -->
             <div class="qr-thank-you" id="thank-you-message">
                 <i class="fas fa-check-circle"></i>
                 <h3>Thank You!</h3>
-                <p>We've added you to our mailing list. If you're able, please consider making a donation to help us get more students on bikes.</p>
+                <p>We've added you to our mailing list. If you're able, please consider making a donation below.</p>
             </div>
 
-            <!-- Email Signup Widget Section -->
-            <div class="qr-widget-section" id="signup-section">
-                <givebutter-widget id="j2GvyL"></givebutter-widget>
+            <!-- Content wrapper for side-by-side layout on desktop -->
+            <div class="qr-content-wrapper">
+                <!-- Video Column -->
+                <div class="qr-video-column">
+                    <div class="qr-video-container">
+                        <div class="video-wrapper" id="video-wrapper">
+                            <video class="qr-video" id="pitch-video" poster="helmetheads-elevator-pitch-still.avif" preload="metadata">
+                                <source src="helmetheads-elevator-pitch.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="video-play-overlay" id="video-overlay">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <p class="play-message">Watch to learn what we do<br>(30 sec, has captions)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signup Column -->
+                <div class="qr-signup-column">
+                    <!-- Email Signup Widget -->
+                    <div class="qr-widget-section" id="signup-section">
+                        <givebutter-widget id="j2GvyL"></givebutter-widget>
+                    </div>
+                </div>
             </div>
 
-            <!-- Donation Widget Section (hidden initially) -->
+            <!-- Donation Widget (hidden initially, shown after email signup) -->
             <div class="qr-widget-section qr-donation-section" id="donation-section">
                 <givebutter-widget id="prm4Gg"></givebutter-widget>
             </div>
@@ -286,15 +446,71 @@
     
     <!-- QR Landing Page Script -->
     <script>
+        // Location-based personalization mapping
+        const locationGreetings = {
+            '1': 'Thanks for scanning our business card!',
+            '2': 'Hello from Cola Town Bike Collective!',
+            '3': 'Thanks for scanning, fellow Indah Coffee lover!',
+            'default': 'Welcome!'
+        };
+
         // Parse location parameter from URL
         function getLocationParam() {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('loc') || 'unknown';
         }
 
+        // Set personalized greeting based on location
+        function setPersonalizedGreeting() {
+            const locationId = getLocationParam();
+            const greetingText = document.getElementById('greeting-text');
+            
+            if (greetingText) {
+                const greeting = locationGreetings[locationId] || locationGreetings['default'];
+                greetingText.textContent = greeting;
+            }
+        }
+
+        // Custom video play button functionality
+        function initializeVideoPlayer() {
+            const video = document.getElementById('pitch-video');
+            const overlay = document.getElementById('video-overlay');
+            const wrapper = document.getElementById('video-wrapper');
+            
+            if (!video || !overlay || !wrapper) return;
+            
+            // Click handler for play button
+            wrapper.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    overlay.classList.add('hidden');
+                    video.setAttribute('controls', 'controls');
+                }
+            });
+            
+            // Show overlay again if video is paused
+            video.addEventListener('pause', function() {
+                if (video.currentTime < video.duration - 0.5) {
+                    overlay.classList.remove('hidden');
+                }
+            });
+            
+            // Hide overlay when video ends
+            video.addEventListener('ended', function() {
+                overlay.classList.remove('hidden');
+                video.removeAttribute('controls');
+            });
+        }
+
         // Track page view with location
         document.addEventListener('DOMContentLoaded', function() {
             const locationId = getLocationParam();
+            
+            // Set personalized greeting
+            setPersonalizedGreeting();
+            
+            // Initialize video player
+            initializeVideoPlayer();
             
             // Track in Google Analytics
             if (typeof gtag !== 'undefined') {
@@ -304,7 +520,6 @@
                     'location_id': locationId
                 });
                 
-                // Set custom dimension for location (if configured)
                 gtag('config', 'G-8FP0VQ2LC7', {
                     'custom_map': {'location_id': locationId}
                 });
@@ -319,7 +534,7 @@
                 });
             }
             
-            // Track in Microsoft Clarity (via custom event)
+            // Track in Microsoft Clarity
             if (typeof clarity !== 'undefined') {
                 clarity('set', 'location_id', locationId);
             }
@@ -371,7 +586,6 @@
 
         // Listen for postMessage events from GiveButter iframe
         window.addEventListener('message', function(event) {
-            // GiveButter may send success messages
             if (event.data && (
                 event.data.type === 'givebutter:form:success' ||
                 event.data.type === 'givebutter:success' ||
@@ -381,42 +595,36 @@
             }
         });
 
-        // Poll for success indicators in the DOM
-        // This is a fallback method that works even if message events don't fire
+        // Poll for success indicators in the DOM (fallback method)
         let checkCount = 0;
-        const maxChecks = 60; // Check for 30 seconds (60 * 500ms)
-        const thankYouMessage = document.getElementById('thank-you-message');
+        const maxChecks = 60;
         
         const checkSignupSuccess = setInterval(function() {
             checkCount++;
             
-            // Skip if already handled
+            const thankYouMessage = document.getElementById('thank-you-message');
+            
             if (thankYouMessage && thankYouMessage.classList.contains('show')) {
                 clearInterval(checkSignupSuccess);
                 return;
             }
             
-            // Look for success indicators in the DOM
             const signupWidget = document.querySelector('givebutter-widget[id="j2GvyL"]');
             if (signupWidget) {
-                const widgetContainer = signupWidget.closest('.qr-widget-container');
+                const widgetContainer = signupWidget.closest('.qr-widget-section');
                 if (widgetContainer) {
-                    // Check for common success indicators
                     const successIndicators = widgetContainer.querySelectorAll(
                         '[class*="success"], [class*="thank"], [class*="complete"], [class*="submitted"], ' +
-                        '[class*="done"], [id*="success"], [id*="thank"], ' +
-                        'iframe[src*="success"], iframe[src*="thank"]'
+                        '[class*="done"], [id*="success"], [id*="thank"]'
                     );
                     
-                    // Also check for text content that indicates success
                     const widgetText = widgetContainer.textContent || '';
                     const successTexts = ['thank you', 'success', 'subscribed', 'you\'re in', 'you\'re all set'];
                     const hasSuccessText = successTexts.some(text => 
                         widgetText.toLowerCase().includes(text)
                     );
                     
-                    if ((successIndicators.length > 0 || hasSuccessText) && 
-                        widgetText.length > 50) { // Make sure widget has loaded
+                    if ((successIndicators.length > 0 || hasSuccessText) && widgetText.length > 50) {
                         handleSignupSuccess();
                         clearInterval(checkSignupSuccess);
                     }
@@ -428,20 +636,18 @@
             }
         }, 500);
 
-        // Also listen for custom events that might be dispatched
+        // Listen for custom events
         document.addEventListener('givebutter:form:success', handleSignupSuccess);
         document.addEventListener('givebutter:success', handleSignupSuccess);
         
-        // Expose function globally in case GiveButter widget calls it directly
+        // Expose function globally
         window.givebutterSignupSuccess = handleSignupSuccess;
         
         // Track donation interactions
         document.addEventListener('click', function(e) {
-            // Check if click is on donation widget
             if (e.target.closest('givebutter-widget[id="prm4Gg"]')) {
                 const locationId = getLocationParam();
                 
-                // Track donation intent
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'begin_checkout', {
                         'event_category': 'Donation',
@@ -460,7 +666,7 @@
             }
         });
         
-        // Track successful donations (if GiveButter exposes this)
+        // Track successful donations
         window.givebutterDonationSuccess = function(data) {
             const locationId = getLocationParam();
             

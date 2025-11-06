@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: 2rem;
     color: var(--dark-color);
@@ -148,7 +148,7 @@ h1, h2, h3, h4, h5, h6,
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 100px;
     gap: 2rem;
 }
 
@@ -168,7 +168,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .logo-img {
-    height: 40px;
+    height: 70px;
     width: auto;
     display: block;
 }
@@ -177,7 +177,7 @@ h1, h2, h3, h4, h5, h6,
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 40px;
+    height: 70px;
 }
 
 .main-title {
@@ -325,7 +325,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 3.9rem;
     font-weight: 400;
     line-height: 1.2;
     margin-bottom: 1.5rem;
@@ -463,7 +463,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .about-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     margin-bottom: 1rem;
     color: var(--dark-color);
@@ -523,7 +523,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .benefit-item h4 {
-    font-size: 1.125rem;
+    font-size: 1.35rem;
     font-weight: 400;
     color: var(--dark-color);
     margin-bottom: 0.25rem;
@@ -536,7 +536,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .bike-trains-links h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: var(--dark-color);
     margin-bottom: 1rem;
@@ -647,7 +647,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .program-box-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     color: var(--dark-color);
     margin: 0;
@@ -707,7 +707,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .cta-text h3 {
-    font-size: 1.75rem;
+    font-size: 2.1rem;
     font-weight: 400;
     color: var(--white);
     margin: 0 0 0.5rem 0;
@@ -801,7 +801,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .school-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     color: var(--black);
     margin-bottom: 0.5rem;
@@ -885,7 +885,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .pilot-timeline h4 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: var(--dark-color);
     margin-bottom: 2rem;
@@ -943,7 +943,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .timeline-content h5 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: var(--dark-color);
 }
@@ -986,7 +986,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .leader-card-pilot h4 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     margin-bottom: 0.5rem;
     color: var(--dark-color);
@@ -1095,7 +1095,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .org-info-group h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: var(--dark-color);
     margin: 0 0 1.5rem 0;
@@ -1150,7 +1150,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .leadership-section > h3 {
-    font-size: 1.75rem;
+    font-size: 2.1rem;
     font-weight: 400;
     text-align: center;
     margin-bottom: 2rem;
@@ -1193,7 +1193,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .leader-card-org h4 {
-    font-size: 1.375rem;
+    font-size: 1.65rem;
     font-weight: 400;
     margin-bottom: 0.5rem;
     color: var(--dark-color);
@@ -1331,7 +1331,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .donation-info-column h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--dark-color);
@@ -1359,7 +1359,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .tier h4 {
-    font-size: 1.375rem;
+    font-size: 1.65rem;
     font-weight: 400;
     color: var(--accent-maroon);
     min-width: 80px;
@@ -1485,7 +1485,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .contact-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--dark-color);
@@ -1512,7 +1512,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .social-links h4 {
-    font-size: 1.125rem;
+    font-size: 1.35rem;
     font-weight: 400;
     margin-bottom: 1rem;
     color: var(--dark-color);
@@ -1707,10 +1707,10 @@ section:nth-of-type(even) .signup-form {
     
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 100px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 100px);
         background: var(--white);
         flex-direction: column;
         justify-content: flex-end;
@@ -1755,7 +1755,7 @@ section:nth-of-type(even) .signup-form {
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
+        gap: 3rem;
     }
 
     .hero-title {
@@ -1845,7 +1845,7 @@ section:nth-of-type(even) .signup-form {
     
     .hero {
         min-height: 80vh;
-        padding-top: 60px;
+        padding-top: 90px;
     }
 
     .about, .program, .fundraising, .contact {
@@ -1853,7 +1853,7 @@ section:nth-of-type(even) .signup-form {
     }
 
     .nav-container {
-        height: 60px;
+        height: 90px;
         gap: 0.5rem;
     }
 
@@ -1863,8 +1863,8 @@ section:nth-of-type(even) .signup-form {
     }
 
     .nav-menu {
-        top: 60px;
-        height: calc(100vh - 60px);
+        top: 90px;
+        height: calc(100vh - 90px);
     }
     
     .btn-donate {
@@ -1872,8 +1872,16 @@ section:nth-of-type(even) .signup-form {
         padding: 7px 18px;
     }
 
+    .logo-img {
+        height: 60px;
+    }
+
+    .logo-text {
+        height: 60px;
+    }
+
     .hero-title {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: 1rem;
     }
 
@@ -1910,7 +1918,7 @@ section:nth-of-type(even) .signup-form {
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: 2rem;
     }
 
@@ -1926,6 +1934,7 @@ section:nth-of-type(even) .signup-form {
 
     .donation-info-column h3 {
         text-align: center;
+        font-size: 2.7rem;
     }
 
     .gallery-grid {
@@ -1935,12 +1944,65 @@ section:nth-of-type(even) .signup-form {
     .gallery-img {
         height: 180px;
     }
+
+    /* Increase all Bebas Neue headings by 50% on mobile */
+    .about-card h3 {
+        font-size: 2.7rem;
+    }
+
+    .benefit-item h4 {
+        font-size: 2rem;
+    }
+
+    .bike-trains-links h3 {
+        font-size: 2.25rem;
+    }
+
+    .org-info-group h3 {
+        font-size: 2.25rem;
+    }
+
+    .contact-info h3 {
+        font-size: 2.7rem;
+    }
+
+    .leader-card-pilot h4 {
+        font-size: 2.7rem;
+    }
+
+    .leader-card-org h4 {
+        font-size: 2.475rem;
+    }
+
+    .leadership-section > h3 {
+        font-size: 3.15rem;
+    }
+
+    .pilot-timeline h4 {
+        font-size: 2.25rem;
+    }
+
+    .timeline-content h5 {
+        font-size: 1.8rem;
+    }
+
+    .tier h4 {
+        font-size: 2.475rem;
+    }
+
+    .social-links h4 {
+        font-size: 2rem;
+    }
+
+    .school-card h3 {
+        font-size: 2.7rem;
+    }
 }
 
 @media (max-width: 480px) {
     .hero {
         min-height: 70vh;
-        padding-top: 50px;
+        padding-top: 70px;
     }
 
     .about, .program, .fundraising, .contact {
@@ -1948,7 +2010,7 @@ section:nth-of-type(even) .signup-form {
     }
 
     .nav-container {
-        height: 50px;
+        height: 70px;
         padding: 0 10px;
         gap: 0.4rem;
     }
@@ -1959,8 +2021,8 @@ section:nth-of-type(even) .signup-form {
     }
 
     .nav-menu {
-        top: 50px;
-        height: calc(100vh - 50px);
+        top: 70px;
+        height: calc(100vh - 70px);
     }
     
     .nav-donate {
@@ -1973,7 +2035,11 @@ section:nth-of-type(even) .signup-form {
     }
 
     .logo-img {
-        height: 30px;
+        height: 50px;
+    }
+
+    .logo-text {
+        height: 50px;
     }
 
     .main-title {
@@ -1990,11 +2056,11 @@ section:nth-of-type(even) .signup-form {
 
     .hero-container {
         padding: 0 15px;
-        gap: 1.5rem;
+        gap: 2.5rem;
     }
 
     .hero-title {
-        font-size: 1.75rem;
+        font-size: 2.625rem;
         margin-bottom: 0.8rem;
     }
 
@@ -2007,7 +2073,7 @@ section:nth-of-type(even) .signup-form {
     }
 
     .section-title {
-        font-size: 1.75rem;
+        font-size: 2.625rem;
         margin-bottom: 1.5rem;
     }
 
@@ -2062,7 +2128,7 @@ section:nth-of-type(even) .signup-form {
     }
 
     .program-box-header h3 {
-        font-size: 1.25rem;
+        font-size: 1.875rem;
     }
 
     .cta-content {
@@ -2070,7 +2136,7 @@ section:nth-of-type(even) .signup-form {
     }
 
     .cta-text h3 {
-        font-size: 1.5rem;
+        font-size: 2.25rem;
     }
 
     .cta-icon {
@@ -2129,5 +2195,62 @@ section:nth-of-type(even) .signup-form {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+    }
+
+    /* Further increase Bebas Neue headings on smallest screens */
+    .about-card h3 {
+        font-size: 2.625rem;
+    }
+
+    .benefit-item h4 {
+        font-size: 1.95rem;
+    }
+
+    .bike-trains-links h3 {
+        font-size: 2.2rem;
+    }
+
+    .org-info-group h3 {
+        font-size: 2.2rem;
+    }
+
+    .contact-info h3 {
+        font-size: 2.625rem;
+    }
+
+    .leader-card-pilot h4 {
+        font-size: 2.625rem;
+    }
+
+    .leader-card-org h4 {
+        font-size: 2.4rem;
+    }
+
+    .leadership-section > h3 {
+        font-size: 3rem;
+    }
+
+    .pilot-timeline h4 {
+        font-size: 2.2rem;
+    }
+
+    .timeline-content h5 {
+        font-size: 1.75rem;
+    }
+
+    .tier h4 {
+        font-size: 2.4rem;
+    }
+
+    .social-links h4 {
+        font-size: 1.95rem;
+    }
+
+    .school-card h3 {
+        font-size: 2.625rem;
+    }
+
+    .donation-info-column h3 {
+        font-size: 2.625rem;
     }
 }

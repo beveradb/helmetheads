@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
@@ -18,14 +18,21 @@ html {
 
 /* CSS Variables */
 :root {
-    --primary-color: #71161c;
-    --secondary-color: #71161c;
-    --accent-color: #71161c;
-    --dark-color: #1e2728;
+    --primary-red: #E63946;
+    --primary-green: #2A9D8F;
+    --accent-maroon: #71161C;
+    --accent-gold: #FFB703;
+    --black: #1A1A1A;
+    --white: #FFFFFF;
+    
+    /* Legacy variable names for compatibility */
+    --primary-color: #71161C;
+    --secondary-color: #E63946;
+    --accent-color: #71161C;
+    --dark-color: #1A1A1A;
     --light-color: #f4ede3;
     --gray-color: #6b7280;
-    --white: #ffffff;
-    --gradient: linear-gradient(135deg, #71161c 0%, #5a1216 100%);
+    --gradient: linear-gradient(135deg, #71161C 0%, #5a1216 100%);
     --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     --border-radius: 12px;
     --transition: all 0.3s ease;
@@ -64,12 +71,12 @@ html {
 
 .btn-secondary {
     background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--accent-maroon);
+    border: 2px solid var(--accent-maroon);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
+    background: var(--accent-maroon);
     color: var(--white);
 }
 
@@ -78,9 +85,28 @@ html {
     font-size: 18px;
 }
 
+/* Header Font - Bebas Neue (Note: Bebas Neue Pro is premium, using Bebas Neue) */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.hero-title,
+.main-title,
+.about-card h3,
+.program-box-header h3,
+.leader-card-pilot h4,
+.leader-card-org h4,
+.school-card h3,
+.org-info-group h3,
+.leadership-section > h3,
+.contact-info h3,
+.donation-info-column h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
 .section-title {
     font-size: 2.5rem;
-    font-weight: 700;
     text-align: center;
     margin-bottom: 2rem;
     color: var(--dark-color);
@@ -99,8 +125,8 @@ html {
     background-clip: unset;
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
-    color: #ffd93d;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    color: var(--accent-gold);
+    text-shadow: 2px 2px 0 var(--black), -1px -1px 0 var(--black), 1px -1px 0 var(--black), -1px 1px 0 var(--black), 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Navigation */
@@ -131,8 +157,8 @@ html {
     align-items: center;
     gap: 12px;
     font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-weight: 400;
+    color: var(--accent-maroon);
     text-decoration: none;
     transition: var(--transition);
 }
@@ -144,19 +170,25 @@ html {
 .logo-img {
     height: 40px;
     width: auto;
+    display: block;
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    justify-content: center;
+    height: 40px;
 }
 
 .main-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-size: 2.5rem;
+    padding-top: 4px;
+    font-weight: 400;
+    color: var(--accent-maroon);
     line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    display: block;
 }
 
 .sub-title {
@@ -191,7 +223,7 @@ html {
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
+    color: var(--accent-maroon);
 }
 
 .hamburger {
@@ -294,11 +326,13 @@ section:nth-of-type(even) .signup-form {
 
 .hero-title {
     font-size: 3.5rem;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.2;
     margin-bottom: 1.5rem;
     color: var(--white);
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 0 var(--black), -1px -1px 0 var(--black), 1px -1px 0 var(--black), -1px 1px 0 var(--black), 0 3px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .hero-subtitle {
@@ -334,7 +368,7 @@ section:nth-of-type(even) .signup-form {
 
 .hero .btn-secondary:hover {
     background: var(--white);
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     border-color: var(--white);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
@@ -348,7 +382,7 @@ section:nth-of-type(even) .signup-form {
 .bike-illustration {
     width: 300px;
     height: 300px;
-    background: var(--gradient);
+    background: var(--primary-green);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -358,9 +392,8 @@ section:nth-of-type(even) .signup-form {
 }
 
 .hero-logo {
-    width: 250px;
+    width: 200px;
     height: auto;
-    filter: brightness(0) invert(1);
 }
 
 @keyframes float {
@@ -419,9 +452,19 @@ section:nth-of-type(even) .signup-form {
     color: var(--white);
 }
 
+/* Leader names in black, titles in primary green */
+.leader-card-pilot h4,
+.leader-card-org h4 {
+    color: var(--black) !important;
+}
+
+.leader-title {
+    color: var(--primary-green);
+}
+
 .about-card h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 1rem;
     color: var(--dark-color);
 }
@@ -474,14 +517,14 @@ section:nth-of-type(even) .signup-form {
 
 .benefit-item i {
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     margin-top: 3px;
     flex-shrink: 0;
 }
 
 .benefit-item h4 {
     font-size: 1.125rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-color);
     margin-bottom: 0.25rem;
 }
@@ -494,7 +537,7 @@ section:nth-of-type(even) .signup-form {
 
 .bike-trains-links h3 {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-color);
     margin-bottom: 1rem;
 }
@@ -519,14 +562,14 @@ section:nth-of-type(even) .signup-form {
 }
 
 .resource-card:hover {
-    border-color: var(--primary-color);
+    border-color: var(--accent-maroon);
     background: var(--light-color);
     transform: translateX(5px);
 }
 
 .resource-card i {
     font-size: 1.25rem;
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     flex-shrink: 0;
 }
 
@@ -600,12 +643,12 @@ section:nth-of-type(even) .signup-form {
 
 .program-box-header i {
     font-size: 1.75rem;
-    color: var(--primary-color);
+    color: var(--accent-maroon);
 }
 
 .program-box-header h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-color);
     margin: 0;
 }
@@ -626,8 +669,8 @@ section:nth-of-type(even) .signup-form {
 }
 
 .program-features i {
-    color: var(--accent-color);
-    font-weight: bold;
+    color: var(--accent-maroon);
+    font-weight: 600;
     margin-top: 3px;
     flex-shrink: 0;
 }
@@ -665,7 +708,7 @@ section:nth-of-type(even) .signup-form {
 
 .cta-text h3 {
     font-size: 1.75rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--white);
     margin: 0 0 0.5rem 0;
 }
@@ -683,8 +726,8 @@ section:nth-of-type(even) .signup-form {
 
 .cta-button .btn {
     background: var(--white);
-    color: var(--primary-color);
-    font-weight: 600;
+    color: var(--accent-maroon);
+    font-weight: 500;
     white-space: nowrap;
 }
 
@@ -742,7 +785,7 @@ section:nth-of-type(even) .signup-form {
     border-radius: 50%;
     margin: 0 auto 1.5rem;
     overflow: hidden;
-    border: 4px solid var(--primary-color);
+    border: 4px solid var(--accent-maroon);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
@@ -759,7 +802,7 @@ section:nth-of-type(even) .signup-form {
 
 .school-card h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
 }
@@ -772,7 +815,7 @@ section:nth-of-type(even) .signup-form {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
@@ -780,7 +823,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .school-website-link:hover {
-    color: var(--accent-color);
+    color: var(--primary-red);
 }
 
 .school-website-link i {
@@ -803,7 +846,7 @@ section:nth-of-type(even) .signup-form {
 
 .fact {
     background: var(--white);
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -842,7 +885,7 @@ section:nth-of-type(even) .signup-form {
 
 .pilot-timeline h4 {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-color);
     margin-bottom: 2rem;
     text-align: center;
@@ -888,8 +931,8 @@ section:nth-of-type(even) .signup-form {
 }
 
 .timeline-item.active .timeline-marker {
-    background: var(--primary-color);
-    box-shadow: 0 0 0 2px var(--primary-color);
+    background: var(--accent-maroon);
+    box-shadow: 0 0 0 2px var(--accent-maroon);
 }
 
 .timeline-content {
@@ -900,7 +943,7 @@ section:nth-of-type(even) .signup-form {
 
 .timeline-content h5 {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-color);
 }
 
@@ -931,7 +974,7 @@ section:nth-of-type(even) .signup-form {
     border-radius: 50%;
     margin: 0 auto 1.5rem;
     overflow: hidden;
-    border: 4px solid var(--primary-color);
+    border: 4px solid var(--accent-maroon);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -943,13 +986,13 @@ section:nth-of-type(even) .signup-form {
 
 .leader-card-pilot h4 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 0.5rem;
     color: var(--dark-color);
 }
 
 .leader-title {
-    color: var(--primary-color);
+    color: var(--primary-red);
     font-weight: 500;
     margin-bottom: 1rem;
     font-size: 1rem;
@@ -971,7 +1014,7 @@ section:nth-of-type(even) .signup-form {
 
 .quality {
     background: var(--white);
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -997,16 +1040,16 @@ section:nth-of-type(even) .signup-form {
 }
 
 .program-intro a {
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     font-weight: 500;
     text-decoration: none;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--accent-maroon);
     transition: all 0.3s ease;
 }
 
 .program-intro a:hover {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
+    color: var(--primary-red);
+    border-bottom-color: var(--primary-red);
 }
 
 /* Fundraising Section */
@@ -1052,11 +1095,11 @@ section:nth-of-type(even) .signup-form {
 
 .org-info-group h3 {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--dark-color);
     margin: 0 0 1.5rem 0;
     padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--accent-maroon);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -1064,7 +1107,7 @@ section:nth-of-type(even) .signup-form {
 
 .org-info-group h3 i {
     font-size: 1.125rem;
-    color: var(--primary-color);
+    color: var(--accent-maroon);
 }
 
 .info-item {
@@ -1080,7 +1123,7 @@ section:nth-of-type(even) .signup-form {
 
 .info-item > i {
     font-size: 1rem;
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     margin-top: 0.25rem;
     flex-shrink: 0;
     width: 20px;
@@ -1107,7 +1150,7 @@ section:nth-of-type(even) .signup-form {
 
 .leadership-section > h3 {
     font-size: 1.75rem;
-    font-weight: 600;
+    font-weight: 400;
     text-align: center;
     margin-bottom: 2rem;
     color: var(--dark-color);
@@ -1138,7 +1181,7 @@ section:nth-of-type(even) .signup-form {
     margin: 0 auto 1.5rem;
     overflow: hidden;
     border-radius: 50%;
-    border: 4px solid var(--primary-color);
+    border: 4px solid var(--accent-maroon);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -1150,13 +1193,13 @@ section:nth-of-type(even) .signup-form {
 
 .leader-card-org h4 {
     font-size: 1.375rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 0.5rem;
     color: var(--dark-color);
 }
 
 .leader-role {
-    color: var(--primary-color);
+    color: var(--primary-green);
     font-weight: 500;
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -1235,8 +1278,8 @@ section:nth-of-type(even) .signup-form {
 
 .stat-number {
     font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-weight: 400;
+    color: var(--accent-maroon);
     margin-bottom: 0.5rem;
 }
 
@@ -1288,7 +1331,7 @@ section:nth-of-type(even) .signup-form {
 
 .donation-info-column h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--dark-color);
 }
@@ -1310,14 +1353,14 @@ section:nth-of-type(even) .signup-form {
 }
 
 .tier:hover {
-    border-color: var(--primary-color);
+    border-color: var(--accent-maroon);
     transform: translateX(3px);
 }
 
 .tier h4 {
     font-size: 1.375rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-weight: 400;
+    color: var(--accent-maroon);
     min-width: 80px;
     flex-shrink: 0;
 }
@@ -1408,7 +1451,7 @@ section:nth-of-type(even) .signup-form {
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--accent-maroon);
 }
 
 .checkbox-group {
@@ -1442,7 +1485,7 @@ section:nth-of-type(even) .signup-form {
 
 .contact-info h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--dark-color);
 }
@@ -1456,7 +1499,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .contact-item i {
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     width: 16px;
     margin-top: 2px;
 }
@@ -1469,7 +1512,7 @@ section:nth-of-type(even) .signup-form {
 
 .social-links h4 {
     font-size: 1.125rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 1rem;
     color: var(--dark-color);
 }
@@ -1494,14 +1537,14 @@ section:nth-of-type(even) .signup-form {
 }
 
 .social-button:hover {
-    background: var(--primary-color);
+    background: var(--accent-maroon);
     color: var(--white);
     transform: translateX(5px);
 }
 
 .social-button i {
     font-size: 1.25rem;
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     transition: var(--transition);
 }
 
@@ -1535,14 +1578,22 @@ section:nth-of-type(even) .signup-form {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 1.25rem;
-    font-weight: 600;
 }
 
 .footer-logo-img {
     height: 30px;
     width: auto;
-    filter: brightness(0) invert(1);
+}
+
+.footer-logo span {
+    font-size: 1.875rem;
+    padding-top: 3px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .footer-description {
@@ -1623,7 +1674,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .footer-social a:hover {
-    background: var(--primary-color);
+    background: var(--accent-maroon);
     transform: translateY(-2px);
 }
 
@@ -1633,7 +1684,7 @@ section:nth-of-type(even) .signup-form {
     padding: 1rem;
     background: #f9fafb;
     border-radius: 8px;
-    border-left: 3px solid var(--primary-color);
+    border-left: 3px solid var(--accent-maroon);
 }
 
 .form-note small {
@@ -1643,7 +1694,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .form-note a {
-    color: var(--primary-color);
+    color: var(--accent-maroon);
     text-decoration: underline;
 }
 
@@ -1925,7 +1976,7 @@ section:nth-of-type(even) .signup-form {
     }
 
     .main-title {
-        font-size: 1.2rem;
+        font-size: 1.875rem;
     }
 
     .sub-title {

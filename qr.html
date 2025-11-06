@@ -142,6 +142,8 @@
         
         .qr-signup-column {
             flex: 1;
+            display: flex;
+            justify-content: center;
         }
         
         /* Email signup widget - subtle background */
@@ -150,6 +152,9 @@
             background: rgba(244, 237, 227, 0.3);
             border-radius: var(--border-radius);
             overflow: hidden;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Constrain GiveButter widget */
@@ -173,6 +178,12 @@
         .qr-video-container {
             margin-bottom: 0;
             position: relative;
+        }
+
+        /* Keep portrait video constrained so the form stays a visual anchor on desktop */
+        .qr-video-column .video-wrapper {
+            max-width: 460px;
+            margin: 0 auto;
         }
         
         .video-wrapper {
@@ -209,10 +220,15 @@
         .video-play-overlay.hidden {
             display: none;
         }
+
+        .video-play-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
         
         .play-button {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             background: var(--gradient);
             display: flex;
@@ -246,11 +262,103 @@
         .play-message {
             color: var(--white);
             text-align: center;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             font-size: 0.9rem;
             font-weight: 500;
             max-width: 300px;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8%);
+        }
+
+        /* Trust row and micro-stat under pitch */
+        .qr-trust-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0.5rem 0;
+        }
+
+        .qr-trust-row i {
+            color: var(--primary-color);
+            margin-right: 6px;
+        }
+
+        .qr-microstat {
+            text-align: center;
+            color: var(--dark-color);
+            font-size: 0.95rem;
+            margin: 0.25rem 0 0.75rem 0;
+        }
+
+        .donate-now {
+            color: var(--primary-color);
+            text-decoration: underline;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .qr-donation-wrapper {
+            margin-top: 1.5rem;
+        }
+
+        .qr-donation-heading {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .qr-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .qr-social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.25rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .qr-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+
+        .qr-social-links a:hover {
+            background: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .share-btn {
+            margin-top: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
         }
         
         /* Thank you message */
@@ -288,14 +396,23 @@
         
         /* Donation section (hidden until after signup) */
         .qr-donation-section {
-            display: none;
-        }
-        
-        .qr-donation-section.show {
             display: block;
         }
         
         /* Mobile optimizations */
+        @media (max-width: 1024px) {
+            .qr-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .qr-video-column,
+            .qr-signup-column {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             .qr-page {
                 padding: 0.75rem 0;
@@ -337,12 +454,12 @@
             }
             
             .play-button {
-                width: 70px;
-                height: 70px;
+                width: 80px;
+                height: 80px;
             }
             
             .play-button i {
-                font-size: 1.75rem;
+                font-size: 1.9rem;
             }
             
             .play-message {
@@ -352,6 +469,25 @@
             
             .qr-video-container {
                 margin-bottom: 1rem;
+            }
+
+            .qr-donation-heading {
+                font-size: 1.25rem;
+            }
+
+            .qr-footer {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+            }
+
+            .qr-social-links {
+                gap: 1rem;
+            }
+
+            .qr-social-links a {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
             }
         }
         
@@ -391,18 +527,20 @@
 
             <!-- Personalized Pitch (dynamically updated by JavaScript) -->
             <div class="qr-pitch" id="personalized-pitch">
-                <p><strong id="greeting-text">Welcome!</strong> Helmet Heads is a 501(c)(3) nonprofit empowering South Carolina teenagers with bikes, community, and the freedom to explore through teacher-led cycling clubs.</p>
+                <p><strong id="greeting-text">Welcome!</strong> Helmet Heads is a nonprofit organization empowering South Carolina teenagers with bikes, community, and the freedom to explore through teacher-led cycling clubs.</p>
                 <p>We've successfully raised initial funds and delivered bikes to students at BCHS in Cayce, but we want to raise more to help additional kids join the club and expand to other schools across South Carolina.</p>
             </div>
 
             <!-- Call to Action -->
-            <p class="qr-cta">If you're interested in our mission, please sign up below - it really helps us out!</p>
+            <p class="qr-cta">Like what we're doing? <a href="#signup-section" class="cta-link">Join our email list</a> - it really helps us out.</p>
+            <p class="qr-cta">Really like what we're doing? <a href="#donation-section" class="donate-now">Donate now!</a></p>
 
             <!-- Thank You Message (hidden initially) -->
             <div class="qr-thank-you" id="thank-you-message">
                 <i class="fas fa-check-circle"></i>
                 <h3>Thank You!</h3>
                 <p>We've added you to our mailing list. If you're able, please consider making a donation below.</p>
+                <button id="share-btn" class="share-btn" type="button">Share this page</button>
             </div>
 
             <!-- Content wrapper for side-by-side layout on desktop -->
@@ -434,10 +572,39 @@
                 </div>
             </div>
 
-            <!-- Donation Widget (hidden initially, shown after email signup) -->
-            <div class="qr-widget-section qr-donation-section" id="donation-section">
-                <givebutter-widget id="prm4Gg"></givebutter-widget>
+            <!-- Donation Widget -->
+            <div class="qr-donation-wrapper">
+                <h2 class="qr-donation-heading">Donate Now</h2>
+                <div class="qr-widget-section qr-donation-section" id="donation-section">
+                    <givebutter-widget id="prm4Gg"></givebutter-widget>
+                </div>
             </div>
+
+            <!-- Footer -->
+            <footer class="qr-footer">
+                <div class="qr-trust-row">
+                    <span><i class="fas fa-shield-alt"></i>501(c)(3)</span>
+                    <span><i class="fas fa-id-badge"></i>EIN 39-4010571</span>
+                    <span><i class="fas fa-check-circle"></i>SC Charity ID P94445</span>
+                </div>
+                <div class="qr-social-links">
+                    <a href="https://www.instagram.com/helmetheadsclub" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/helmetheadsclub" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/helmetheads" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@HelmetHeadsClub" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@helmetheadsclub" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </footer>
         </div>
     </div>
 
@@ -483,7 +650,12 @@
             wrapper.addEventListener('click', function() {
                 if (video.paused) {
                     video.play();
-                    overlay.classList.add('hidden');
+                    // Fade overlay then hide
+                    overlay.classList.add('fade-out');
+                    setTimeout(() => {
+                        overlay.classList.add('hidden');
+                        overlay.classList.remove('fade-out');
+                    }, 400);
                     video.setAttribute('controls', 'controls');
                 }
             });
@@ -499,6 +671,42 @@
             video.addEventListener('ended', function() {
                 overlay.classList.remove('hidden');
                 video.removeAttribute('controls');
+            });
+
+            // Video analytics: play + quartiles
+            let q25 = false, q50 = false, q100 = false, playLogged = false;
+            video.addEventListener('play', function() {
+                if (!playLogged) {
+                    const locationId = getLocationParam();
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'video_play', {
+                            'event_category': 'Video',
+                            'event_label': 'QR Pitch',
+                            'location_id': locationId
+                        });
+                    }
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'ViewContent', { content_name: 'QR Pitch Video', location_id: getLocationParam() });
+                    }
+                    playLogged = true;
+                }
+            });
+            video.addEventListener('timeupdate', function() {
+                if (!video.duration) return;
+                const p = (video.currentTime / video.duration) * 100;
+                const locationId = getLocationParam();
+                if (!q25 && p >= 25) {
+                    q25 = true;
+                    if (typeof gtag !== 'undefined') gtag('event', 'video_progress', { percent: 25, location_id: locationId });
+                }
+                if (!q50 && p >= 50) {
+                    q50 = true;
+                    if (typeof gtag !== 'undefined') gtag('event', 'video_progress', { percent: 50, location_id: locationId });
+                }
+                if (!q100 && p >= 99) {
+                    q100 = true;
+                    if (typeof gtag !== 'undefined') gtag('event', 'video_complete', { location_id: locationId });
+                }
             });
         }
 
@@ -574,14 +782,10 @@
                 });
             }
             
-            // Hide signup section and show donation section after a delay
+            // After a short delay, scroll users toward the donation section
             setTimeout(function() {
-                signupSection.style.display = 'none';
-                donationSection.classList.add('show');
-                
-                // Scroll to donation section
                 donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 1500);
+            }, 1200);
         }
 
         // Listen for postMessage events from GiveButter iframe
@@ -663,6 +867,49 @@
                         location_id: locationId
                     });
                 }
+            }
+        });
+
+        // 'Donate now' anchor tracking + smooth scroll
+        document.addEventListener('click', function(e) {
+            const anchor = e.target.closest('a[href="#donation-section"]');
+            if (anchor) {
+                const donationSection = document.getElementById('donation-section');
+                if (donationSection) {
+                    e.preventDefault();
+                    donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                const locationId = getLocationParam();
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'donate_now_click', {
+                        'event_category': 'CTA',
+                        'event_label': 'Donate Now Link',
+                        'location_id': locationId
+                    });
+                }
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'DonateNowClick', { location_id: locationId });
+                }
+            }
+        });
+
+        // Share button after signup
+        document.addEventListener('click', async function(e) {
+            const shareBtn = e.target.closest('#share-btn');
+            if (shareBtn) {
+                const shareData = {
+                    title: 'Helmet Heads',
+                    text: 'I just discovered Helmet Heads - helping teens get bikes via school clubs. Check it out:',
+                    url: window.location.href
+                };
+                try {
+                    if (navigator.share) {
+                        await navigator.share(shareData);
+                    } else {
+                        await navigator.clipboard.writeText(window.location.href);
+                        alert('Link copied to clipboard!');
+                    }
+                } catch (err) { /* no-op */ }
             }
         });
         

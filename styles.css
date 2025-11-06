@@ -803,7 +803,7 @@ section:nth-of-type(even) .signup-form {
 .school-card h3 {
     font-size: 1.5rem;
     font-weight: 400;
-    color: var(--dark-color);
+    color: var(--black);
     margin-bottom: 0.5rem;
 }
 
@@ -815,7 +815,7 @@ section:nth-of-type(even) .signup-form {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--accent-maroon);
+    color: var(--primary-green);
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
@@ -823,7 +823,8 @@ section:nth-of-type(even) .signup-form {
 }
 
 .school-website-link:hover {
-    color: var(--primary-red);
+    color: var(--primary-green);
+    opacity: 0.8;
 }
 
 .school-website-link i {
@@ -846,7 +847,7 @@ section:nth-of-type(even) .signup-form {
 
 .fact {
     background: var(--white);
-    color: var(--accent-maroon);
+    color: var(--primary-green);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -992,7 +993,7 @@ section:nth-of-type(even) .signup-form {
 }
 
 .leader-title {
-    color: var(--primary-red);
+    color: var(--primary-green);
     font-weight: 500;
     margin-bottom: 1rem;
     font-size: 1rem;
@@ -1014,7 +1015,7 @@ section:nth-of-type(even) .signup-form {
 
 .quality {
     background: var(--white);
-    color: var(--accent-maroon);
+    color: var(--primary-green);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.875rem;

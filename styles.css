@@ -1605,9 +1605,18 @@ section:nth-of-type(even) .signup-form {
 }
 
 .footer-ein {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 1);
+    font-size: 1rem;
     margin: 0;
+}
+.footer-ein a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+}
+.footer-ein a:hover {
+    color: var(--white);
+    text-decoration: underline;
 }
 
 .footer-section h4 {

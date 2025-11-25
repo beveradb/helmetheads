@@ -728,35 +728,13 @@
     </footer>
 
     <script src="script.js?v=20251009"></script>
+    <script src="givebutter-tracking.js?v=20251125"></script>
     <script defer src="https://widgets.givebutter.com/latest.umd.cjs?acct=SqUcaiaJOyN4QAIZ&p=other"></script>
     
     <!-- Analytics & Conversion Tracking -->
     <script>
-        // Track interactions
+        // Track navigation to donate sections
         document.addEventListener('DOMContentLoaded', function() {
-            // Track donation button clicks (Givebutter widgets)
-            document.addEventListener('click', function(e) {
-                // Check if click is on donate button or within Givebutter widget
-                if (e.target.closest('givebutter-widget')) {
-                    // Google Analytics event
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'begin_checkout', {
-                            'event_category': 'Donation',
-                            'event_label': 'Donate Button Click'
-                        });
-                    }
-                    
-                    // Meta Pixel event for donation intent
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'InitiateCheckout', {
-                            content_name: 'Bike Donation',
-                            content_category: 'Donation'
-                        });
-                    }
-                }
-            });
-            
-            // Track successful navigation to donate sections
             const donateLinks = document.querySelectorAll('a[href="#fundraising"]');
             donateLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -779,30 +757,7 @@
             });
         });
         
-        // Givebutter success callback (if available)
-        // Note: This would need to be configured in Givebutter dashboard
-        window.givebutterSuccess = function(data) {
-            // Google Analytics event
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'purchase', {
-                    'transaction_id': data.id || 'unknown',
-                    'value': data.amount || 0,
-                    'currency': 'USD',
-                    'event_category': 'Donation',
-                    'event_label': 'Donation Complete'
-                });
-            }
-            
-            // Meta Pixel event
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Purchase', {
-                    value: data.amount || 0,
-                    currency: 'USD',
-                    content_name: 'Bike Donation',
-                    content_type: 'donation'
-                });
-            }
-        };
+        // GiveButter donation/signup tracking is handled by givebutter-tracking.js
     </script>
 
     <!--Start of Tawk.to Script - Deferred for performance-->

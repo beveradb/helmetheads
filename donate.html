@@ -938,106 +938,126 @@
             }
         });
 
-        // Handle email signup success
-        function handleSignupSuccess() {
-            const signupSection = document.getElementById('signup-section');
-            const donationSection = document.getElementById('donation-section');
-            const thankYouMessage = document.getElementById('thank-you-message');
+        // Unified GiveButter Success Handler
+        function handleGiveButterSuccess(event) {
+            console.log('GiveButter Success Event Detected:', event);
             
-            if (!signupSection || !donationSection || !thankYouMessage) return;
+            // Normalize data from CustomEvent or MessageEvent
+            let data = event.detail || event.data;
+            if (data && data.givebutter) data = data.givebutter; // Handle postMessage wrapping
             
-            // Prevent duplicate triggers
-            if (thankYouMessage.classList.contains('show')) return;
+            console.log('GiveButter Event Data:', data);
             
-            // Show thank you message
-            thankYouMessage.classList.add('show');
+            // Check for donation vs signup
+            // Donations typically have an 'amount' field > 0
+            const isDonation = data && (data.amount > 0 || data.plan_id);
             
-            // Scroll to thank you message
-            thankYouMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Track conversion
+            // Get location for analytics
             const locationId = getLocationParam();
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'email_signup', {
-                    'event_category': 'Conversion',
-                    'event_label': 'Location ' + locationId,
-                    'location_id': locationId
-                });
+
+            if (isDonation) {
+                // --- DONATION TRACKING ---
+                console.log('Tracking Donation:', data.amount);
+                
+                if (typeof gtag !== 'undefined') {
+                    console.log('Firing GA Purchase Event');
+                    gtag('event', 'purchase', {
+                        'transaction_id': data.id || ('don_' + Date.now()),
+                        'value': parseFloat(data.amount || 0),
+                        'currency': 'USD',
+                        'event_category': 'Donation',
+                        'event_label': 'Location ' + locationId,
+                        'location_id': locationId
+                    });
+                } else {
+                    console.warn('Google Analytics (gtag) not loaded');
+                }
+                
+                if (typeof fbq !== 'undefined') {
+                    console.log('Firing Facebook Pixel Purchase Event');
+                    fbq('track', 'Purchase', {
+                        value: parseFloat(data.amount || 0),
+                        currency: 'USD',
+                        content_name: 'Bike Donation',
+                        content_type: 'donation',
+                        location_id: locationId
+                    });
+                } else {
+                    console.warn('Facebook Pixel (fbq) not loaded');
+                }
+                
+            } else {
+                // --- SIGNUP TRACKING ---
+                console.log('Tracking Signup');
+                
+                if (typeof gtag !== 'undefined') {
+                    console.log('Firing GA Email Signup Event');
+                    gtag('event', 'email_signup', {
+                        'event_category': 'Conversion',
+                        'event_label': 'Location ' + locationId,
+                        'location_id': locationId
+                    });
+                } else {
+                    console.warn('Google Analytics (gtag) not loaded');
+                }
+                
+                if (typeof fbq !== 'undefined') {
+                    console.log('Firing Facebook Pixel Subscribe Event');
+                    fbq('track', 'Subscribe', {
+                        location_id: locationId
+                    });
+                } else {
+                    console.warn('Facebook Pixel (fbq) not loaded');
+                }
+
+                // Show local Thank You UI for signups
+                const thankYouMessage = document.getElementById('thank-you-message');
+                const donationSection = document.getElementById('donation-section');
+                
+                if (thankYouMessage && !thankYouMessage.classList.contains('show')) {
+                    console.log('Showing Thank You Message');
+                    thankYouMessage.classList.add('show');
+                    thankYouMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Nudge towards donation after a delay
+                    setTimeout(function() {
+                        if (donationSection) {
+                            console.log('Scrolling to Donation Section');
+                            donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 1200);
+                }
             }
-            
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Subscribe', {
-                    location_id: locationId
-                });
-            }
-            
-            // After a short delay, scroll users toward the donation section
-            setTimeout(function() {
-                donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 1200);
         }
 
         // Listen for postMessage events from GiveButter iframe
         window.addEventListener('message', function(event) {
+            // Log all GiveButter-related messages for debugging
+            if (event.data && (
+                (typeof event.data === 'string' && event.data.includes('givebutter')) ||
+                (event.data.type && event.data.type.includes('givebutter')) ||
+                event.data.givebutter
+            )) {
+                console.log('Raw GiveButter Message Received:', event.data);
+            }
+
             if (event.data && (
                 event.data.type === 'givebutter:form:success' ||
                 event.data.type === 'givebutter:success' ||
                 (event.data.givebutter && event.data.givebutter.success)
             )) {
-                handleSignupSuccess();
+                handleGiveButterSuccess(event);
             }
         });
 
-        // Poll for success indicators in the DOM (fallback method)
-        let checkCount = 0;
-        const maxChecks = 60;
-        
-        const checkSignupSuccess = setInterval(function() {
-            checkCount++;
-            
-            const thankYouMessage = document.getElementById('thank-you-message');
-            
-            if (thankYouMessage && thankYouMessage.classList.contains('show')) {
-                clearInterval(checkSignupSuccess);
-                return;
-            }
-            
-            const signupWidget = document.querySelector('givebutter-widget[id="j2GvyL"]');
-            if (signupWidget) {
-                const widgetContainer = signupWidget.closest('.qr-widget-section');
-                if (widgetContainer) {
-                    const successIndicators = widgetContainer.querySelectorAll(
-                        '[class*="success"], [class*="thank"], [class*="complete"], [class*="submitted"], ' +
-                        '[class*="done"], [id*="success"], [id*="thank"]'
-                    );
-                    
-                    const widgetText = widgetContainer.textContent || '';
-                    const successTexts = ['thank you', 'success', 'subscribed', 'you\'re in', 'you\'re all set'];
-                    const hasSuccessText = successTexts.some(text => 
-                        widgetText.toLowerCase().includes(text)
-                    );
-                    
-                    if ((successIndicators.length > 0 || hasSuccessText) && widgetText.length > 50) {
-                        handleSignupSuccess();
-                        clearInterval(checkSignupSuccess);
-                    }
-                }
-            }
-            
-            if (checkCount >= maxChecks) {
-                clearInterval(checkSignupSuccess);
-            }
-        }, 500);
+        // Listen for direct custom events (if widget is not in iframe)
+        document.addEventListener('givebutter:form:success', handleGiveButterSuccess);
+        document.addEventListener('givebutter:success', handleGiveButterSuccess);
 
-        // Listen for custom events
-        document.addEventListener('givebutter:form:success', handleSignupSuccess);
-        document.addEventListener('givebutter:success', handleSignupSuccess);
+        /* Legacy fallback polling removed for cleaner event-based approach */
         
         // Expose function globally
-        window.givebutterSignupSuccess = handleSignupSuccess;
-        
-        // Track donation interactions
+        window.givebutterSuccess = handleGiveButterSuccess;
         document.addEventListener('click', function(e) {
             if (e.target.closest('givebutter-widget[id="prm4Gg"]')) {
                 const locationId = getLocationParam();
@@ -1103,31 +1123,7 @@
             }
         });
         
-        // Track successful donations
-        window.givebutterDonationSuccess = function(data) {
-            const locationId = getLocationParam();
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'purchase', {
-                    'transaction_id': data.id || 'unknown',
-                    'value': data.amount || 0,
-                    'currency': 'USD',
-                    'event_category': 'Donation',
-                    'event_label': 'Location ' + locationId,
-                    'location_id': locationId
-                });
-            }
-            
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Purchase', {
-                    value: data.amount || 0,
-                    currency: 'USD',
-                    content_name: 'Bike Donation',
-                    content_type: 'donation',
-                    location_id: locationId
-                });
-            }
-        };
+        // Track donation interactions
     </script>
 
     <!-- Initialize DotLottie animation -->

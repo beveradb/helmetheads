@@ -155,7 +155,7 @@
                 <li><a href="#contact" class="nav-link">Updates</a></li>
             </ul>
             <div class="nav-donate">
-                <a href="#fundraising" class="btn btn-primary btn-donate">Donate</a>
+                <a href="/donate" class="btn btn-primary btn-donate">Donate</a>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -181,7 +181,7 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get Updates</a>
-                    <a href="#fundraising" class="btn btn-secondary">Support Our Mission</a>
+                    <a href="/donate" class="btn btn-secondary">Donate Now</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -680,7 +680,7 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#program">Our Program</a></li>
                         <li><a href="#pilot">Pilot Program</a></li>
-                        <li><a href="#fundraising">Donate</a></li>
+                        <li><a href="/donate">Donate</a></li>
                         <li><a href="#charity-details">Our Organization</a></li>
                     </ul>
                 </div>
@@ -731,35 +731,6 @@
     <script src="givebutter-tracking.js?v=20251125"></script>
     <script defer src="https://widgets.givebutter.com/latest.umd.cjs?acct=SqUcaiaJOyN4QAIZ&p=other"></script>
     
-    <!-- Analytics & Conversion Tracking -->
-    <script>
-        // Track navigation to donate sections
-        document.addEventListener('DOMContentLoaded', function() {
-            const donateLinks = document.querySelectorAll('a[href="#fundraising"]');
-            donateLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    // Google Analytics event
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'view_item', {
-                            'event_category': 'Navigation',
-                            'event_label': 'Fundraising Section'
-                        });
-                    }
-                    
-                    // Meta Pixel event
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'ViewContent', {
-                            content_name: 'Fundraising Section',
-                            content_type: 'page_section'
-                        });
-                    }
-                });
-            });
-        });
-        
-        // GiveButter donation/signup tracking is handled by givebutter-tracking.js
-    </script>
-
     <!--Start of Tawk.to Script - Deferred for performance-->
     <script type="text/javascript">
         // Defer Tawk.to until after page load

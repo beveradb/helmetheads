@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Helmet Heads - Youth Cycling Program</title>
+    <title>Donate to Helmet Heads - Youth Cycling Program</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Join Helmet Heads - A 501(c)(3) nonprofit empowering South Carolina teenagers with bikes, community, and the freedom to explore.">
-    <link rel="canonical" href="https://helmetheads.club/qr">
+    <meta name="description" content="Support Helmet Heads - Help us empower South Carolina teenagers with bikes, community, and the freedom to explore. Your donation makes a difference.">
+    <link rel="canonical" href="https://helmetheads.club/donate">
     
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -805,9 +805,9 @@
     <script>
         // Location-based personalization mapping
         const locationGreetings = {
-            '1': 'Thanks for scanning our business card!',
+            '1': 'Thanks for visiting!',
             '2': 'Hello from Cola Town Bike Collective!',
-            '3': 'Thanks for scanning, fellow Indah Coffee lover!',
+            '3': 'Hello fellow Indah Coffee lover!',
             'default': 'Welcome!'
         };
 
@@ -871,12 +871,12 @@
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'video_play', {
                             'event_category': 'Video',
-                            'event_label': 'QR Pitch',
+                            'event_label': 'Donation Pitch',
                             'location_id': locationId
                         });
                     }
                     if (typeof fbq !== 'undefined') {
-                        fbq('track', 'ViewContent', { content_name: 'QR Pitch Video', location_id: getLocationParam() });
+                        fbq('track', 'ViewContent', { content_name: 'Donation Pitch Video', location_id: getLocationParam() });
                     }
                     playLogged = true;
                 }
@@ -912,8 +912,8 @@
             
             // Track in Google Analytics
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'qr_scan', {
-                    'event_category': 'QR Code',
+                gtag('event', 'page_view', {
+                    'event_category': 'Donation Page',
                     'event_label': 'Location ' + locationId,
                     'location_id': locationId
                 });
@@ -926,8 +926,8 @@
             // Track in Meta Pixel
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'ViewContent', {
-                    content_name: 'QR Landing Page',
-                    content_category: 'QR Code',
+                    content_name: 'Donation Landing Page',
+                    content_category: 'Donation Page',
                     location_id: locationId
                 });
             }

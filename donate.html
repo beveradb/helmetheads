@@ -1032,15 +1032,12 @@
 
         // Listen for postMessage events from GiveButter iframe
         window.addEventListener('message', function(event) {
-            // Log all GiveButter-related messages for debugging
-            if (event.data && (
-                (typeof event.data === 'string' && event.data.includes('givebutter')) ||
-                (event.data.type && event.data.type.includes('givebutter')) ||
-                event.data.givebutter
-            )) {
-                console.log('Raw GiveButter Message Received:', event.data);
+            // 1. Debug: Log EVERYTHING coming from GiveButter domains to find the missing signal
+            if (event.origin && event.origin.includes('givebutter.com')) {
+                console.log('🔍 DEBUG: Message from GiveButter origin:', event.data);
             }
 
+            // 2. Check for standard success events
             if (event.data && (
                 event.data.type === 'givebutter:form:success' ||
                 event.data.type === 'givebutter:success' ||

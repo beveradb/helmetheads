@@ -1017,16 +1017,31 @@
             // Log all GiveButter-related messages for debugging
             if (event.data && event.data.givebutter && event.data.event) {
                 const data = event.data;
-                console.log('🔍 Received GiveButter event:', data.event);
+                console.log('🔍 Received GiveButter event of type: ' + data.event, event);
             }
 
-            // Check for standard success events
+            // Check for standard success events (including donation.complete)
             if (event.data && (
                 event.data.type === 'givebutter:form:success' ||
                 event.data.type === 'givebutter:success' ||
-                (event.data.givebutter && event.data.givebutter.success)
+                (event.data.givebutter && event.data.givebutter.success) ||
+                (event.data.givebutter && event.data.event === 'donation.complete')
             )) {
-                handleGiveButterSuccess(event);
+                // If it's a donation.complete event, ensure we pass the right data structure
+                if (event.data.givebutter && event.data.event === 'donation.complete') {
+                    // Normalize data structure for the handler
+                    const normalizedEvent = {
+                        data: {
+                            givebutter: {
+                                ...event.data,
+                                success: true // Force success flag
+                            }
+                        }
+                    };
+                    handleGiveButterSuccess(normalizedEvent);
+                } else {
+                    handleGiveButterSuccess(event);
+                }
             }
 
             // Check for intermediate donation events

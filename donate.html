@@ -1014,6 +1014,12 @@
 
         // Listen for postMessage events from GiveButter iframe
         window.addEventListener('message', function(event) {
+            // Log all GiveButter-related messages for debugging
+            if (event.data && event.data.givebutter && event.data.event) {
+                const data = event.data;
+                console.log('🔍 Received GiveButter event:', data.event);
+            }
+
             // Check for standard success events
             if (event.data && (
                 event.data.type === 'givebutter:form:success' ||

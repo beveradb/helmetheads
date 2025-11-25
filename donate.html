@@ -940,13 +940,9 @@
 
         // Unified GiveButter Success Handler
         function handleGiveButterSuccess(event) {
-            console.log('GiveButter Success Event Detected:', event);
-            
             // Normalize data from CustomEvent or MessageEvent
             let data = event.detail || event.data;
             if (data && data.givebutter) data = data.givebutter; // Handle postMessage wrapping
-            
-            console.log('GiveButter Event Data:', data);
             
             // Check for donation vs signup
             // Donations typically have an 'amount' field > 0
@@ -957,10 +953,8 @@
 
             if (isDonation) {
                 // --- DONATION TRACKING ---
-                console.log('Tracking Donation:', data.amount);
-                
                 if (typeof gtag !== 'undefined') {
-                    console.log('Firing GA Purchase Event');
+                    console.log('✅ Tracking GA Purchase:', data.amount);
                     gtag('event', 'purchase', {
                         'transaction_id': data.id || ('don_' + Date.now()),
                         'value': parseFloat(data.amount || 0),
@@ -969,12 +963,10 @@
                         'event_label': 'Location ' + locationId,
                         'location_id': locationId
                     });
-                } else {
-                    console.warn('Google Analytics (gtag) not loaded');
                 }
                 
                 if (typeof fbq !== 'undefined') {
-                    console.log('Firing Facebook Pixel Purchase Event');
+                    console.log('✅ Tracking FB Pixel Purchase:', data.amount);
                     fbq('track', 'Purchase', {
                         value: parseFloat(data.amount || 0),
                         currency: 'USD',
@@ -982,32 +974,24 @@
                         content_type: 'donation',
                         location_id: locationId
                     });
-                } else {
-                    console.warn('Facebook Pixel (fbq) not loaded');
                 }
                 
             } else {
                 // --- SIGNUP TRACKING ---
-                console.log('Tracking Signup');
-                
                 if (typeof gtag !== 'undefined') {
-                    console.log('Firing GA Email Signup Event');
+                    console.log('✅ Tracking GA Signup');
                     gtag('event', 'email_signup', {
                         'event_category': 'Conversion',
                         'event_label': 'Location ' + locationId,
                         'location_id': locationId
                     });
-                } else {
-                    console.warn('Google Analytics (gtag) not loaded');
                 }
                 
                 if (typeof fbq !== 'undefined') {
-                    console.log('Firing Facebook Pixel Subscribe Event');
+                    console.log('✅ Tracking FB Pixel Signup');
                     fbq('track', 'Subscribe', {
                         location_id: locationId
                     });
-                } else {
-                    console.warn('Facebook Pixel (fbq) not loaded');
                 }
 
                 // Show local Thank You UI for signups
@@ -1015,14 +999,12 @@
                 const donationSection = document.getElementById('donation-section');
                 
                 if (thankYouMessage && !thankYouMessage.classList.contains('show')) {
-                    console.log('Showing Thank You Message');
                     thankYouMessage.classList.add('show');
                     thankYouMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     
                     // Nudge towards donation after a delay
                     setTimeout(function() {
                         if (donationSection) {
-                            console.log('Scrolling to Donation Section');
                             donationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                     }, 1200);
@@ -1032,12 +1014,7 @@
 
         // Listen for postMessage events from GiveButter iframe
         window.addEventListener('message', function(event) {
-            // 1. Debug: Log EVERYTHING coming from GiveButter domains to find the missing signal
-            if (event.origin && event.origin.includes('givebutter.com')) {
-                console.log('🔍 DEBUG: Message from GiveButter origin:', event.data);
-            }
-
-            // 2. Check for standard success events
+            // Check for standard success events
             if (event.data && (
                 event.data.type === 'givebutter:form:success' ||
                 event.data.type === 'givebutter:success' ||
@@ -1045,7 +1022,43 @@
             )) {
                 handleGiveButterSuccess(event);
             }
+
+            // Check for intermediate donation events
+            if (event.data && event.data.givebutter && event.data.event) {
+                const data = event.data;
+                const locationId = getLocationParam();
+
+                if (data.event === 'donation.started') {
+                    if (typeof gtag !== 'undefined') {
+                        console.log('✅ Tracking GA Begin Checkout');
+                        gtag('event', 'begin_checkout', {
+                            'currency': 'USD',
+                            'value': parseFloat(data.total || 0),
+                            'event_category': 'Donation',
+                            'event_label': 'Location ' + locationId,
+                            'location_id': locationId
+                        });
+                    }
+                } else if (data.event === 'donation.button.next') {
+                    if (typeof gtag !== 'undefined') {
+                        console.log('✅ Tracking GA Checkout Progress');
+                        gtag('event', 'checkout_progress', {
+                            'currency': 'USD',
+                            'value': parseFloat(data.total || 0),
+                            'checkout_step': 2,
+                            'event_category': 'Donation',
+                            'event_label': 'Location ' + locationId,
+                            'location_id': locationId
+                        });
+                    }
+                }
+            }
         });
+
+        // 3. LISTEN FOR NATIVE DOM EVENTS (The "Secret" Way)
+        // Sometimes widgets dispatch events directly to the document, bypassing postMessage
+        document.addEventListener('givebutter:success', handleGiveButterSuccess);
+        document.addEventListener('givebutter:form:success', handleGiveButterSuccess);
 
         // Listen for direct custom events (if widget is not in iframe)
         document.addEventListener('givebutter:form:success', handleGiveButterSuccess);

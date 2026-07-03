@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Helmet Heads style preview</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" />
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<style>
+  html, body, #map { margin: 0; width: 100%; height: 100%; }
+</style>
+<div id="map"></div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const map = new maplibregl.Map({
+    container: "map",
+    style: params.get("style"),
+    bounds: [[-81.100988, 33.943360], [-81.035242, 33.998016]],
+    fitBoundsOptions: { padding: 0 },
+    attributionControl: { compact: false },
+    fadeDuration: 0,
+  });
+  map.once("idle", () => { window._mapReady = true; });
+</script>

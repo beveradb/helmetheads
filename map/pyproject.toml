@@ -1,0 +1,14 @@
+[project]
+name = "helmetheads-map"
+version = "0.1.0"
+description = "Print-map rendering pipeline for the Helmet Heads bike room wall map"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.32",
+    "pillow>=10",
+    "playwright>=1.45",
+    "prettymaps>=1.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]

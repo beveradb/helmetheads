@@ -139,8 +139,8 @@ def test_deg2num_london_z10():
 
 def test_tile_range_cayce_z16():
     xs, ys = tile_range(CAYCE_BBOX, 16)
-    assert (xs.start, xs.stop - 1) == (18004, 18016)
-    assert (ys.start, ys.stop - 1) == (26179, 26191)
+    assert (xs.start, xs.stop - 1) == (18004, 18015)
+    assert (ys.start, ys.stop - 1) == (26180, 26191)
 
 
 def test_crop_box_lies_within_stitched_image():
@@ -240,7 +240,7 @@ git commit -m "feat(map): tile/mercator math with tests"
 
 **Interfaces:**
 - Consumes: `CAYCE_BBOX`, `TILE_SIZE`, `tile_range`, `crop_box` from `maptools`.
-- Produces: `map/previews/osm-carto.png` and `map/previews/cyclosm.png` (~3064×3039 px). CLI: `uv run python scripts/stitch_tiles.py [style ...]` with styles `osm-carto`, `cyclosm` (default: both).
+- Produces: `map/previews/osm-carto.png` and `map/previews/cyclosm.png` (~3064×3071 px). CLI: `uv run python scripts/stitch_tiles.py [style ...]` with styles `osm-carto`, `cyclosm` (default: both).
 
 - [ ] **Step 1: Implement `map/scripts/stitch_tiles.py`**
 
@@ -310,12 +310,12 @@ if __name__ == "__main__":
 - [ ] **Step 2: Run it (both styles)**
 
 Run: `uv run python scripts/stitch_tiles.py`
-Expected: progress to `169/169 tiles` per style (~1–2 min each on first run), then `saved .../previews/osm-carto.png` and `saved .../previews/cyclosm.png`.
+Expected: progress to `144/144 tiles` per style (~1–2 min each on first run), then `saved .../previews/osm-carto.png` and `saved .../previews/cyclosm.png`.
 
 - [ ] **Step 3: Verify output dimensions and content**
 
 Run: `uv run python -c "from PIL import Image; [print(s, Image.open(f'previews/{s}.png').size) for s in ('osm-carto','cyclosm')]"`
-Expected: both ~`(3064, 3039)` (±2 px). Open one PNG and eyeball: the Congaree River should cross the NE corner and the street grid of Cayce should fill the frame.
+Expected: both ~`(3064, 3071)` (±2 px). Open one PNG and eyeball: the Congaree River should cross the NE corner and the street grid of Cayce should fill the frame.
 
 - [ ] **Step 4: Verify the cache makes re-runs instant**
 
@@ -417,7 +417,7 @@ Expected: `saved .../previews/positron.png`, `bright.png`, `liberty.png` (~30–
 - [ ] **Step 4: Verify output dimensions and content**
 
 Run: `uv run python -c "from PIL import Image; [print(s, Image.open(f'previews/{s}.png').size) for s in ('positron','bright','liberty')]"`
-Expected: all `(3200, ~3180)`. Open `positron.png` and eyeball: greyscale base, same area as the Task 3 stitches (river in NE corner), MapLibre attribution visible bottom-right.
+Expected: all `(3200, ~3208)`. Open `positron.png` and eyeball: greyscale base, same area as the Task 3 stitches (river in NE corner), MapLibre attribution visible bottom-right.
 
 - [ ] **Step 5: Commit**
 

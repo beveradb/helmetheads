@@ -27,7 +27,8 @@ internal style comparison, not redistribution.
 
 ## Phase 2 — print-resolution rendering
 
-Requires Docker. From `render/`:
+Requires Docker (for the render stack) and `uv` on the host (the render/composite
+helpers call `uv run`). From `render/`:
 
     docker compose build tools && docker compose up -d db
     ./checkout-styles.sh   # osm-carto (pinned tag) + cyclosm master/lite

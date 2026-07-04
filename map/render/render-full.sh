@@ -2,6 +2,7 @@
 # Full print-resolution renders: 14400 px wide raster of base + overlay, plus vector PDFs.
 set -euo pipefail
 cd "$(dirname "$0")"
+mkdir -p out  # ensure the bind-mount source exists (host-owned) if clip.sh wasn't run first
 
 ./render.sh /checkouts/openstreetmap-carto/mapnik-print.xml full-osm-carto.png 14400
 ./render.sh /checkouts/cyclosm-lite/mapnik-print.xml full-cyclosm-lite.png 14400

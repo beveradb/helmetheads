@@ -211,7 +211,7 @@ docker compose run --rm -w /checkouts/openstreetmap-carto tools \
 # osm-carto post-import SQL (files present in recent releases; skip any that don't exist).
 for f in indexes.sql functions.sql common-values.sql; do
   docker compose run --rm -w /checkouts/openstreetmap-carto tools \
-    bash -c "[ -f $f ] && psql -d gis -f $f || echo 'skip $f (not in this release)'"
+    bash -c "if [ -f $f ]; then psql -v ON_ERROR_STOP=1 -d gis -f $f; else echo 'skip $f (not in this release)'; fi"
 done
 
 # 2) CyclOSM: legacy pgsql output with hstore into db "osm" (per its docs/INSTALL.md).

@@ -24,3 +24,24 @@ and drop the PDF into `previews/` manually.
 Data/tiles © OpenStreetMap contributors (ODbL). Preview tiles courtesy of
 OSMF (osm-carto), CyclOSM/OSM France, and OpenFreeMap — previews are for
 internal style comparison, not redistribution.
+
+## Phase 2 — print-resolution rendering
+
+Requires Docker. From `render/`:
+
+    docker compose build tools && docker compose up -d db
+    ./checkout-styles.sh   # osm-carto (pinned tag) + cyclosm master/lite
+    ./clip.sh              # expects ~/Downloads/south-carolina-260703.osm.pbf
+    ./import.sh            # both databases
+    ./build-osm-carto.sh   # external data (slow first run) + fonts + carto compile
+    ./build-cyclosm.sh     # patch + shapefiles + carto compile, both variants
+    ./render-full.sh       # 14400px renders + vector PDFs
+
+Then from `map/`:
+
+    uv run python scripts/composite_print.py   # base + overlay -> render/out/full-composite.png
+    uv run python scripts/letter_crop.py       # true-scale 8x10.5in test crop around school
+
+Print `render/out/letter-test.png` at **Actual Size** (no scaling) to judge
+label legibility before ordering wall print. `./audit-bike-infra.sh`
+reports the area's cycling infrastructure mapped in OSM.

@@ -1,7 +1,7 @@
 # Helmet Heads Wall Map — Design
 
 **Date:** 2026-07-03
-**Status:** Approved approach; spec pending user review
+**Status:** Phase 1 complete (2026-07-03). Style decided 2026-07-04: **OSM Carto base + CyclOSM-lite cycling overlay** (composite validated by user via compare.html). Phase 2 render backend per this spec: Mapnik + CartoCSS (both chosen styles are CartoCSS-native).
 
 ## Goal
 
@@ -26,7 +26,7 @@ target with no cropping. Print scale ≈ 1:5,000 (≈ OSM zoom 16–17).
 
 | Question | Decision |
 |---|---|
-| Style | Undecided — render several candidates and compare visually; expected winner: minimal base + bike emphasis |
+| Style | **Decided (2026-07-04): OSM Carto base + CyclOSM-lite transparent cycling overlay** (user reviewed all candidates) |
 | Workflow | Local scripted pipeline, reproducible, in this repo under `map/` |
 | Content | All street names legible; bike infrastructure emphasized; key POIs (school prominent, parks, river, bridges); title/logo/legend/scale bar/north arrow |
 | Print | Local large-format print shop; laminated (gloss = dry-erase friendly) or mounted; target vector PDF, with 300 dpi raster fallback |

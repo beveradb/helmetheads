@@ -2,6 +2,7 @@
 # Clip the South Carolina extract to the print bbox + 0.02° margin.
 set -euo pipefail
 cd "$(dirname "$0")"
+mkdir -p checkouts external-data out
 
 SRC="${1:-$HOME/Downloads/south-carolina-260703.osm.pbf}"
 mkdir -p ../data

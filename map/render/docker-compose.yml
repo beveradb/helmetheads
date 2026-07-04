@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_PASSWORD: renderpass
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    shm_size: 1g
+
+  tools:
+    build:
+      context: .
+      dockerfile: Dockerfile.tools
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGHOST: db
+      PGUSER: postgres
+      PGPASSWORD: renderpass
+    volumes:
+      - .:/render
+      - ../data:/data
+      - ./checkouts:/checkouts
+      - ./external-data:/external-data
+      - ./out:/out
+    working_dir: /checkouts
+
+volumes:
+  dbdata:

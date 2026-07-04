@@ -3,3 +3,8 @@ cache/
 .venv/
 __pycache__/
 .pytest_cache/
+
+data/
+render/checkouts/
+render/external-data/
+render/out/

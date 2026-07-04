@@ -12,7 +12,7 @@ Setup (once):
 
 Render all previews:
 
-    uv run python scripts/stitch_tiles.py        # osm-carto, cyclosm
+    uv run python scripts/stitch_tiles.py        # osm-carto, cyclosm, osm-carto+cyclosm-lite composite
     uv run python scripts/render_maplibre.py     # positron, bright, liberty
     uv run python scripts/render_prettymaps.py   # artistic
 

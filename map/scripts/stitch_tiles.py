@@ -1,6 +1,10 @@
 """Stitch public raster tiles for the Cayce bbox into preview PNGs.
 
 One-off, low-volume use: identifying User-Agent, on-disk cache, polite delay.
+
+Supports plain styles and composites: "cyclosm-lite" is CyclOSM's official
+transparent overlay (cycling infrastructure only), designed to sit on top of
+another basemap.
 """
 
 import sys
@@ -17,6 +21,11 @@ USER_AGENT = "HelmetHeadsMapPreview/1.0 (one-off print preview; andrew@beveridge
 STYLES = {
     "osm-carto": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     "cyclosm": "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
+    "cyclosm-lite": "https://a.tile-cyclosm.openstreetmap.fr/cyclosm-lite/{z}/{x}/{y}.png",
+}
+# name -> (base style, transparent overlay style)
+COMPOSITES = {
+    "osm-carto-cyclosm-overlay": ("osm-carto", "cyclosm-lite"),
 }
 ROOT = Path(__file__).resolve().parent.parent  # map/
 CACHE = ROOT / "cache"
@@ -35,13 +44,14 @@ def fetch_tile(style: str, url_tpl: str, z: int, x: int, y: int) -> Image.Image:
         resp.raise_for_status()
         cached.write_bytes(resp.content)
         time.sleep(0.25)
-    return Image.open(cached).convert("RGB")
+    return Image.open(cached).convert("RGBA")
 
 
-def stitch(style: str) -> Path:
+def build(style: str) -> Image.Image:
+    """Stitch and crop one style to the bbox, RGBA."""
     url_tpl = STYLES[style]
     xs, ys = tile_range(CAYCE_BBOX, ZOOM)
-    canvas = Image.new("RGB", (len(xs) * TILE_SIZE, len(ys) * TILE_SIZE))
+    canvas = Image.new("RGBA", (len(xs) * TILE_SIZE, len(ys) * TILE_SIZE), (0, 0, 0, 0))
     total, done = len(xs) * len(ys), 0
     for j, y in enumerate(ys):
         for i, x in enumerate(xs):
@@ -49,12 +59,25 @@ def stitch(style: str) -> Path:
             done += 1
             print(f"\r{style}: {done}/{total} tiles", end="", flush=True)
     print()
+    return canvas.crop(crop_box(CAYCE_BBOX, ZOOM))
+
+
+def save(name: str, image: Image.Image) -> Path:
     PREVIEWS.mkdir(parents=True, exist_ok=True)
-    out = PREVIEWS / f"{style}.png"
-    canvas.crop(crop_box(CAYCE_BBOX, ZOOM)).save(out)
+    out = PREVIEWS / f"{name}.png"
+    image.save(out)
     return out
 
 
+def render(target: str) -> Path:
+    if target in COMPOSITES:
+        base, overlay = COMPOSITES[target]
+        return save(target, Image.alpha_composite(build(base), build(overlay)))
+    return save(target, build(target))
+
+
 if __name__ == "__main__":
-    for style in sys.argv[1:] or list(STYLES):
-        print(f"saved {stitch(style)}")
+    # Default: the two full styles plus the composite (which also fetches cyclosm-lite).
+    targets = sys.argv[1:] or ["osm-carto", "cyclosm", *COMPOSITES]
+    for target in targets:
+        print(f"saved {render(target)}")

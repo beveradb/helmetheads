@@ -32,7 +32,7 @@ MAROON, RED, AMBER, CREAM, INK = "#71161c", "#e63946", "#f59e0b", "#f4ede3", "#2
 CYCLE_BLUE = "#1f4fd6"
 PARK_GREEN = "#b8dfa9"
 
-bbox = anchored_bbox(CAYCE_BBOX, 1.0, MAP_H / MAP_W)  # trim 1mi W + S, anchor NE
+bbox = anchored_bbox(CAYCE_BBOX, 0.5, MAP_H / MAP_W)  # trim 0.5mi W + S, anchor NE
 
 # School pixel position within the map slot (mercator fractions, zoom cancels).
 xw, yn = deg2xy(bbox.north, bbox.west, 0)

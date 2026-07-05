@@ -9,7 +9,7 @@ mkdir -p out
 read -r W S E N < <(cd .. && uv run python -c "
 import sys; sys.path.insert(0, 'scripts')
 from maptools import CAYCE_BBOX, anchored_bbox
-b = anchored_bbox(CAYCE_BBOX, 1.0, 13500/14400)  # trim 1mi W + S, anchor NE
+b = anchored_bbox(CAYCE_BBOX, 0.5, 13500/14400)  # trim 0.5mi W + S, anchor NE
 print(b.west, b.south, b.east, b.north)
 ")
 echo "poster bbox: W=$W S=$S E=$E N=$N"

@@ -103,6 +103,27 @@ until it reads well, then order the big print.
 | Raster-only output if MapLibre path chosen | Acceptable at 300 dpi; Mapnik path exists if vector required |
 | Public tile usage policies | One-off, low volume, identifying UA; Phase 2 renders locally from downloaded data |
 
+## Phase 3 — cartographic furniture (decided 2026-07-05)
+
+Compose the print-ready poster from the Phase 2 map, script-generated (SVG →
+PDF + PNG proof) for reproducibility — not manual Inkscape.
+
+- **Canvas:** 48×48 in (14400×14400 px @ 300 dpi), brand cream (`#f4ede3`).
+- **Title band:** top 3 in, maroon (`#71161c`) — Helmet Heads vector logo, "HELMET
+  HEADS" wordmark (Bebas Neue), "Brookland-Cayce Cycling Club" subtitle
+  (Montserrat), "RIDE MAP · Cayce, SC" at right. Brand fonts match the club site.
+- **Map:** the 50%-overlay composite, **re-rendered** to fill the width below the
+  band. The area is square but the sub-band slot is slightly wide, so the N-S
+  extent is trimmed ~0.15 mi total (split top/bottom; school stays centered) so
+  the map fills with no side mats and no post-crop.
+- **School marker:** maroon ★ + "Brookland-Cayce HS" callout, placed by lat/lon.
+- **Legend:** bottom-right soft-cream panel over the river/quarry corner —
+  greenway/cycle track, on-road cycle route, cycle lane, park, school.
+- **Scale bar + north arrow:** bottom-left, 1 mile + 1 km, computed from render scale.
+- **Attribution footer:** OSM (ODbL) + CyclOSM + Helmet Heads.
+- **Output:** `poster.pdf` (vector furniture, embedded map raster) + 300 dpi PNG
+  proof; a 100%-scale US-letter proof of the title band and legend for a print check.
+
 ## Out of scope
 
 - Web/interactive map for the site (could reuse the pipeline later)

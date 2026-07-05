@@ -1,0 +1,22 @@
+FROM debian:bookworm-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    osm2pgsql osmium-tool postgresql-client \
+    python3 python3-pip python3-mapnik python3-psycopg2 python3-yaml python3-requests \
+    mapnik-utils gdal-bin curl ca-certificates git unzip \
+    nodejs npm \
+    fonts-dejavu-core fonts-noto fonts-noto-cjk \
+    fonts-hanazono fonts-unifont \
+    librsvg2-bin fontconfig \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g carto
+RUN pip3 install --break-system-packages nik4
+
+# Register /render/fonts as a fontconfig search directory so fc-match finds
+# project fonts (BebasNeue, Montserrat) fetched at runtime by get-poster-fonts.sh.
+RUN echo '<fontconfig><dir>/render/fonts</dir></fontconfig>' \
+    > /etc/fonts/conf.d/99-render-fonts.conf
+
+CMD ["bash"]

@@ -8,8 +8,8 @@ mkdir -p out
 # Compute the trimmed bbox (same E/W + center lat as the print bbox, mercator aspect 0.9375).
 read -r W S E N < <(cd .. && uv run python -c "
 import sys; sys.path.insert(0, 'scripts')
-from maptools import CAYCE_BBOX, fit_bbox_to_aspect
-b = fit_bbox_to_aspect(CAYCE_BBOX, 13500/14400)
+from maptools import CAYCE_BBOX, anchored_bbox
+b = anchored_bbox(CAYCE_BBOX, 1.0, 13500/14400)  # trim 1mi W + S, anchor NE
 print(b.west, b.south, b.east, b.north)
 ")
 echo "poster bbox: W=$W S=$S E=$E N=$N"

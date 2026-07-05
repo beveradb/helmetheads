@@ -72,3 +72,22 @@ def fit_bbox_to_aspect(bbox: BBox, aspect: float) -> BBox:
     north = y_to_lat(y_center - dy / 2.0)
     south = y_to_lat(y_center + dy / 2.0)  # y increases southward
     return BBox(west=bbox.west, south=south, east=bbox.east, north=north)
+
+
+def mile_to_lon(miles: float, lat: float) -> float:
+    """Longitude degrees spanning `miles` at latitude `lat`."""
+    return miles * 1609.344 / (111319.49 * math.cos(math.radians(lat)))
+
+
+def anchored_bbox(bbox: BBox, trim_west_miles: float, aspect: float) -> BBox:
+    """Anchor the NE corner (keep east + north); move the west edge east by
+    `trim_west_miles`; set the south edge so mercator_aspect == `aspect`.
+    Trims the west and (via the fixed north + aspect) the south, zooming in
+    on the NE while filling the same slot."""
+    lat_ref = (bbox.north + bbox.south) / 2.0
+    west = bbox.west + mile_to_lon(trim_west_miles, lat_ref)
+    x_w, _ = deg2xy(0.0, west, 0)
+    x_e, _ = deg2xy(0.0, bbox.east, 0)
+    _, y_n = deg2xy(bbox.north, 0.0, 0)
+    south = y_to_lat(y_n + aspect * (x_e - x_w))  # y increases southward
+    return BBox(west=west, south=south, east=bbox.east, north=bbox.north)

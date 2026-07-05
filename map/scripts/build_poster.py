@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from maptools import CAYCE_BBOX, deg2xy, fit_bbox_to_aspect
+from maptools import CAYCE_BBOX, anchored_bbox, deg2xy
 
 # --- canvas / geometry ---
 W = H = 14400
@@ -32,7 +32,7 @@ MAROON, RED, AMBER, CREAM, INK = "#71161c", "#e63946", "#f59e0b", "#f4ede3", "#2
 CYCLE_BLUE = "#1f4fd6"
 PARK_GREEN = "#b8dfa9"
 
-bbox = fit_bbox_to_aspect(CAYCE_BBOX, MAP_H / MAP_W)
+bbox = anchored_bbox(CAYCE_BBOX, 1.0, MAP_H / MAP_W)  # trim 1mi W + S, anchor NE
 
 # School pixel position within the map slot (mercator fractions, zoom cancels).
 xw, yn = deg2xy(bbox.north, bbox.west, 0)
@@ -94,14 +94,8 @@ p.append(f'<text x="{W - 180}" y="480" font-family="Bebas Neue" font-size="300" 
 p.append(f'<text x="{W - 180}" y="660" font-family="Montserrat" font-size="140" '
          f'fill="{CREAM}" text-anchor="end">Cayce, South Carolina</text>')
 
-# --- school marker: star + callout pill ---
-p.append(star(sx, sy, 155, MAROON, CREAM, 24))
-pill_w, pill_h = 1180, 220
-px0, py0 = sx + 130, sy - pill_h / 2
-p.append(f'<rect x="{px0:.0f}" y="{py0:.0f}" width="{pill_w}" height="{pill_h}" '
-         f'rx="44" fill="{CREAM}" fill-opacity="0.93" stroke="{MAROON}" stroke-width="10"/>')
-p.append(f'<text x="{px0 + 54:.0f}" y="{sy + 48:.0f}" font-family="Montserrat" '
-         f'font-size="128" font-weight="600" fill="{INK}">Brookland-Cayce HS</text>')
+# --- school marker: star only (no label — it obscured nearby streets) ---
+p.append(star(sx, sy, 180, MAROON, CREAM, 26))
 
 # --- legend (bottom-right, over the river/quarry corner) ---
 lp_w, lp_h = 3620, 1820

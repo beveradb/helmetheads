@@ -50,6 +50,15 @@ def test_fit_bbox_preserves_west_east_and_center_lat():
     assert abs(fitted_center - orig_center) < 0.001
 
 
+def test_anchored_bbox_keeps_ne_hits_aspect_and_trims_west():
+    from maptools import anchored_bbox
+
+    b = anchored_bbox(CAYCE_BBOX, 1.0, 0.9375)
+    assert b.east == CAYCE_BBOX.east and b.north == CAYCE_BBOX.north  # NE anchored
+    assert abs(mercator_aspect(b) - 0.9375) < 1e-6                    # fills slot
+    assert b.west > CAYCE_BBOX.west and b.south > CAYCE_BBOX.south    # west + south trimmed
+
+
 def test_fit_bbox_expands_ns_for_wide_aspect():
     wide = fit_bbox_to_aspect(CAYCE_BBOX, 1.5)
     assert wide.north > CAYCE_BBOX.north

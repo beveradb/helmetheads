@@ -70,7 +70,10 @@ def star(cx, cy, r, fill, stroke, sw):
 
 
 p = []
-p.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+# Declare the real physical print size (48in) so the exported PDF's page is
+# 48x48in, not the 150in rsvg would infer from 14400px at 96 CSS dpi. The
+# viewBox keeps all furniture coordinates in the 14400px design space.
+p.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="48in" height="48in" '
          f'viewBox="0 0 {W} {H}">')
 p.append(f'<rect width="{W}" height="{H}" fill="{CREAM}"/>')
 

@@ -12,7 +12,10 @@ docker compose run --rm tools bash -c '
   cp /render/fonts/*.ttf /usr/share/fonts/truetype/poster/
   fc-cache -f >/dev/null
   cd /out
+  # PDF: 48x48in page (SVG declares width/height in inches).
   rsvg-convert -f pdf -o poster.pdf poster.svg
-  rsvg-convert -f png -o poster-proof-full.png poster.svg
+  # PNG proof: pin to 14400x14400 px so the full-res proof is unaffected by the
+  # SVG now carrying a physical (inch) intrinsic size.
+  rsvg-convert -f png -w 14400 -h 14400 -o poster-proof-full.png poster.svg
 '
 ls -la out/poster.pdf out/poster-proof-full.png

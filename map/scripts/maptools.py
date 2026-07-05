@@ -53,3 +53,22 @@ def mercator_aspect(bbox: BBox) -> float:
     x_w, y_n = deg2xy(bbox.north, bbox.west, 0)
     x_e, y_s = deg2xy(bbox.south, bbox.east, 0)
     return (y_s - y_n) / (x_e - x_w)
+
+
+def y_to_lat(y: float) -> float:
+    """Inverse of deg2xy's y at zoom 0: Web-Mercator y-fraction → latitude degrees."""
+    return math.degrees(math.atan(math.sinh(math.pi * (1.0 - 2.0 * y))))
+
+
+def fit_bbox_to_aspect(bbox: BBox, aspect: float) -> BBox:
+    """Return a new BBox with same west/east and same center latitude,
+    adjusting N-S extent symmetrically."""
+    x_w, _ = deg2xy(0.0, bbox.west, 0)
+    x_e, _ = deg2xy(0.0, bbox.east, 0)
+    _, y_n = deg2xy(bbox.north, 0.0, 0)
+    _, y_s = deg2xy(bbox.south, 0.0, 0)
+    y_center = (y_n + y_s) / 2.0
+    dy = aspect * (x_e - x_w)  # desired mercator height
+    north = y_to_lat(y_center - dy / 2.0)
+    south = y_to_lat(y_center + dy / 2.0)  # y increases southward
+    return BBox(west=bbox.west, south=south, east=bbox.east, north=north)
